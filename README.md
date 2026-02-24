@@ -9,7 +9,11 @@ The application is built using React for the frontend and Spring Boot with MySQL
 Result link: https://peetlamahesh123.github.io/globalmart/
 
 ---
+## Demo Images
+<img width="528" height="754" alt="image" src="https://github.com/user-attachments/assets/f0863f42-bffe-4b32-bfb9-ca34274c4a37" />
+<img width="530" height="591" alt="image" src="https://github.com/user-attachments/assets/ef85e4ff-6ec6-4710-a437-472d2737d6dc" />
 
+---
 ## 🚀 Features
 
 - User Registration & Login
