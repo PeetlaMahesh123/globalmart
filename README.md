@@ -11,7 +11,8 @@ Result link: https://peetlamahesh123.github.io/globalmart/
 ---
 ## Demo Images
 <img width="502" height="725" alt="image" src="https://github.com/user-attachments/assets/c1f5f35c-0f1e-4a46-b6de-99a61188e471" />
-<img width="502" height="562" alt="image" src="https://github.com/user-attachments/assets/2f70af95-5c6e-4849-b93d-e405cfb0726c" />
+<img width="500" height="565" alt="image" src="https://github.com/user-attachments/assets/cfcedd17-d2aa-4bd4-b8d7-a182ced391bb" />
+
 
 ---
 ## 🚀 Features
