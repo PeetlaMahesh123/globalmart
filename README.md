@@ -6,7 +6,7 @@ The application is built using React for the frontend and Spring Boot with MySQL
 
 ---
 ## Live Link of Project:
-https://peetlamahesh123.github.io/globalmart/
+Result link: https://peetlamahesh123.github.io/globalmart/
 
 ---
 
