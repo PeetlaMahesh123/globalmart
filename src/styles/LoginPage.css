@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.page-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:
+    linear-gradient(rgba(0, 10, 25, 0.85), rgba(0, 0, 0, 0.9)),
+    url("../assets/ecommerce2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.form-container {
+  width: 420px;
+  padding: 50px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(25px);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  text-align: center;
+  animation: fadeIn 0.8s ease;
+  transition: 0.4s ease;
+}
+
+.form-container:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 80px rgba(0, 255, 255, 0.4);
+}
+
+.form-title {
+  color: #00f0ff;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 35px;
+}
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.form-input {
+  padding: 15px;
+  border-radius: 12px;
+  border: none;
+  background: rgba(255, 255, 255, 0.95);
+  font-size: 15px;
+  transition: 0.3s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  box-shadow: 0 0 18px #00f0ff;
+  transform: scale(1.04);
+}
+
+.form-button {
+  padding: 15px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(45deg, #00f0ff, #0072ff);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.form-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 240, 255, 0.6);
+}
+
+.error-message {
+  color: #ff4d4d;
+  background: rgba(255, 0, 0, 0.15);
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.form-footer {
+  margin-top: 25px;
+  font-size: 14px;
+  color: #e0e0e0;
+}
+
+.form-footer a {
+  color: #00f0ff;
+  text-decoration: none;
+}
+
+.form-footer a:hover {
+  text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

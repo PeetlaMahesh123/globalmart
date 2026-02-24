@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ===== Default Futuristic Ecommerce Background ===== */
+.register-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:
+    linear-gradient(rgba(0, 10, 25, 0.85), rgba(0, 0, 0, 0.9)),
+    url("../assets/ecommerce1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  transition: 0.5s ease;
+}
+
+/* ===== Admin (Growth Analytics Style) ===== */
+.admin-bg {
+  background:
+    linear-gradient(rgba(0, 0, 40, 0.85), rgba(0, 0, 0, 0.9)),
+    url("../assets/ecommerce4.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* ===== Customer (Digital Cart Interface) ===== */
+.customer-bg {
+  background:
+    linear-gradient(rgba(0, 20, 50, 0.85), rgba(0, 0, 0, 0.9)),
+    url("../assets/ecommerce3.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* ===== Glass Card ===== */
+.register-card {
+  width: 420px;
+  padding: 50px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(25px);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8);
+  color: white;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  animation: fadeIn 0.8s ease;
+  transition: 0.4s ease;
+}
+
+.register-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 80px rgba(0, 255, 255, 0.4);
+}
+
+.admin-theme {
+  border: 2px solid #00f0ff;
+}
+
+.customer-theme {
+  border: 2px solid #00bfff;
+}
+
+.form-title {
+  text-align: center;
+  margin-bottom: 35px;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #00f0ff;
+}
+
+.form-group {
+  margin-bottom: 22px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 15px;
+  border-radius: 12px;
+  border: none;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.95);
+  transition: 0.3s ease;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 0 18px #00f0ff;
+  transform: scale(1.04);
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 15px;
+  border-radius: 12px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+  background: linear-gradient(45deg, #00f0ff, #0072ff);
+  transition: 0.3s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 240, 255, 0.6);
+}
+
+.customer-btn {
+  background: linear-gradient(45deg, #00bfff, #0040ff);
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 14px;
+}
+
+.login-link a {
+  color: #00f0ff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+.error {
+  color: #ff6b6b;
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
