@@ -10,8 +10,8 @@ Result link: https://peetlamahesh123.github.io/globalmart/
 
 ---
 ## Demo Images
-<img width="528" height="754" alt="image" src="https://github.com/user-attachments/assets/f0863f42-bffe-4b32-bfb9-ca34274c4a37" />
-<img width="530" height="591" alt="image" src="https://github.com/user-attachments/assets/ef85e4ff-6ec6-4710-a437-472d2737d6dc" />
+<img width="502" height="725" alt="image" src="https://github.com/user-attachments/assets/c1f5f35c-0f1e-4a46-b6de-99a61188e471" />
+<img width="502" height="562" alt="image" src="https://github.com/user-attachments/assets/2f70af95-5c6e-4849-b93d-e405cfb0726c" />
 
 ---
 ## 🚀 Features
