@@ -1,0 +1,92 @@
+/* Container */
+.profile-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Profile Button */
+.profile-dropdown button {
+  background: transparent;
+  border: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 6px 10px;
+  transition: background 0.2s ease;
+}
+
+.profile-dropdown button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+}
+
+/* Avatar Image */
+.profile-dropdown img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;      /* Prevent blur */
+  object-position: center;
+  border: 2px solid white;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: 45px;
+  background: white;
+  color: black;
+  width: 170px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+  z-index: 1000;
+  animation: dropdownFade 0.2s ease-in-out;
+}
+
+/* Dropdown Items */
+.dropdown-menu a,
+.dropdown-menu button {
+  padding: 10px 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-size: 14px;
+  transition: background 0.2s ease;
+}
+
+.dropdown-menu a {
+  text-decoration: none;
+  color: black;
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu button:hover {
+  background: #f3f3f3;
+}
+
+/* Logout Button Styling */
+.dropdown-menu button:last-child {
+  color: red;
+  font-weight: 500;
+}
+
+/* Smooth animation */
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

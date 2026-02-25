@@ -1,0 +1,14 @@
+.customer-homepage {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.navigation {
+  background: #fff;
+}
+
+.main-content {
+  flex: 1;
+  background: #f4f6f9;
+}

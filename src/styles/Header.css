@@ -1,0 +1,113 @@
+/* 🔹 Main Header */
+.header {
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  padding: 14px 50px;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+/* 🔹 Header Content Layout */
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 🔹 Right Section */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+/* 🔹 Logo Container */
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+/* 🔹 Logo Styling */
+.logo {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* 🔥 Logo Hover Effect */
+.logo:hover {
+  color: #ffcc00;
+  transform: scale(1.05);
+}
+
+/* 🔹 Cart Icon Styling */
+.cart-icon {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.cart-icon:hover {
+  transform: scale(1.1);
+}
+
+/* 🔹 Cart Badge */
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background-color: #ff3b3b;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 7px;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
+  animation: pulse 1.5s infinite;
+}
+
+/* 🔥 Badge Pulse Animation */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* 🔹 Profile Dropdown Smooth Effect */
+.profile-dropdown {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.profile-dropdown:hover {
+  transform: scale(1.05);
+}
+
+/* 🔹 Responsive */
+@media (max-width: 768px) {
+  .header {
+    padding: 12px 20px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .header-actions {
+    gap: 15px;
+  }
+}

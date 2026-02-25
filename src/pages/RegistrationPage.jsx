@@ -1,8 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/RegistrationPage.css";
 
 const RegistrationPage = () => {
+
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -11,7 +14,9 @@ const RegistrationPage = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
 
+  // ---------------- VALIDATION ----------------
   const validate = () => {
     let newErrors = {};
 
@@ -26,6 +31,7 @@ const RegistrationPage = () => {
 
     const passwordPattern =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/;
+
     if (!passwordPattern.test(formData.password)) {
       newErrors.password =
         "Password must be 8+ characters with uppercase, lowercase, number & special character.";
@@ -39,6 +45,7 @@ const RegistrationPage = () => {
     return Object.keys(newErrors).length === 0;
   };
 
+  // ---------------- HANDLE INPUT CHANGE ----------------
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -46,11 +53,40 @@ const RegistrationPage = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  // ---------------- HANDLE SUBMIT ----------------
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validate()) {
-      console.log("Form Submitted:", formData);
-      alert("Registration Successful!");
+
+    if (!validate()) return;
+
+    setLoading(true);
+
+    try {
+      const response = await fetch(
+        "http://localhost:9092/api/users/register",   // ✅ Correct Backend URL
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert("Registration Successful!");
+        navigate("/login");   // Redirect to login page
+      } else {
+        alert(data.error || "Registration Failed");
+      }
+
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Server error. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -76,6 +112,7 @@ const RegistrationPage = () => {
         <h2 className="form-title">GlobalMart Register</h2>
 
         <form onSubmit={handleSubmit}>
+
           {/* Username */}
           <div className="form-group">
             <input
@@ -134,15 +171,17 @@ const RegistrationPage = () => {
             )}
           </div>
 
-          {/* Submit */}
+          {/* Submit Button */}
           <button
             type="submit"
+            disabled={loading}
             className={`submit-btn ${
               formData.role === "CUSTOMER" ? "customer-btn" : ""
             }`}
           >
-            Sign Up
+            {loading ? "Registering..." : "Sign Up"}
           </button>
+
         </form>
 
         <p className="login-link">

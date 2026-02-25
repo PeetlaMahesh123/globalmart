@@ -1,0 +1,27 @@
+.cart-icon {
+  position: relative;
+  cursor: pointer;
+}
+
+.cart-icon-svg {
+  width: 28px;
+  height: 28px;
+  fill: white;
+  transition: 0.3s ease;
+}
+
+.cart-icon:hover .cart-icon-svg {
+  transform: scale(1.1);
+}
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: red;
+  color: white;
+  font-size: 12px;
+  padding: 3px 6px;
+  border-radius: 50%;
+  font-weight: bold;
+}

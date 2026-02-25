@@ -1,0 +1,24 @@
+.category-navigation {
+  background: white;
+  padding: 10px 40px;
+  border-bottom: 1px solid #ddd;
+}
+
+.category-list {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.category-item {
+  font-weight: 500;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 20px;
+  transition: 0.3s ease;
+}
+
+.category-item:hover {
+  background: #2a5298;
+  color: white;
+}
