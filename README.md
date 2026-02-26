@@ -15,6 +15,15 @@ Result link: https://peetlamahesh123.github.io/globalmart/
 
 
 ---
+## 🚀 Features
+
+- User Registration & Login
+- Secure Authentication using Spring Security
+- Role-Based Access Control (Admin/User)
+- Product Listing & Management
+- Add to Cart Functionality
+- REST API Integration
+- MySQL Database Connectivity
 
 ---
 
