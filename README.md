@@ -1,4 +1,4 @@
-
+# 🛒 GlobalMart – Full Stack E-Commerce Web Application
 
 ## 📌 Project Description
 GlobalMart is a full-stack e-commerce web application that allows users to register, log in, browse products, and manage purchases through a secure authentication system.  
