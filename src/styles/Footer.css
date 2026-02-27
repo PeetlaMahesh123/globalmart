@@ -1,56 +1,189 @@
+/* ===============================
+   MAIN FOOTER
+================================= */
+
 .footer {
-  background: linear-gradient(135deg, #4c1d95, #7c3aed);
-  color: #f8fafc;
-  padding: 50px 60px 20px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.98),
+    rgba(30, 41, 59, 0.98)
+  );
+
+  color: white;
+
+  padding-top: 40px;
+
   margin-top: 60px;
-  font-family: 'Segoe UI', sans-serif;
+
+  border-top: 1px solid rgba(255,255,255,0.08);
+
+  box-shadow: 0 -5px 25px rgba(0,0,0,0.4);
+
 }
+
+
+/* ===============================
+   FOOTER CONTENT CONTAINER
+================================= */
 
 .footer-content {
+
+  max-width: 1400px;
+
+  margin: auto;
+
+  padding: 0 40px 30px;
+
   display: flex;
+
   justify-content: space-between;
+
+  align-items: center;
+
   flex-wrap: wrap;
-  gap: 40px;
+
+  gap: 20px;
+
 }
 
+
+/* ===============================
+   LEFT SECTION
+================================= */
+
 .footer-left h3 {
-  font-size: 22px;
-  margin-bottom: 10px;
-  font-weight: 600;
-  color: #ffffff;
+
+  font-size: 24px;
+
+  font-weight: bold;
+
+  background: linear-gradient(90deg, #7c4dff, #00d4ff);
+
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  margin-bottom: 8px;
+
 }
 
 .footer-left p {
+
+  color: rgba(255,255,255,0.7);
+
   font-size: 14px;
-  color: #fbcfe8;
-  font-style: italic;
+
 }
 
+
+/* ===============================
+   LINKS SECTION
+================================= */
+
 .footer-links {
+
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+
+  gap: 25px;
+
+  flex-wrap: wrap;
+
 }
 
 .footer-links a {
-  color: #f3e8ff;
+
+  color: rgba(255,255,255,0.8);
+
+  text-decoration: none;
+
   font-size: 14px;
-  transition: 0.3s ease;
+
+  position: relative;
+
+  transition: 0.3s;
+
+}
+
+
+/* Hover glow underline animation */
+
+.footer-links a::after {
+
+  content: "";
+
+  position: absolute;
+
+  width: 0%;
+
+  height: 2px;
+
+  left: 0;
+
+  bottom: -4px;
+
+  background: linear-gradient(90deg, #7c4dff, #00d4ff);
+
+  transition: 0.3s;
+
 }
 
 .footer-links a:hover {
-  color: #f472b6;
-  transform: translateX(6px);
+
+  color: #00d4ff;
+
 }
 
+.footer-links a:hover::after {
+
+  width: 100%;
+
+}
+
+
+/* ===============================
+   BOTTOM SECTION
+================================= */
+
 .footer-bottom {
-  margin-top: 40px;
-  padding-top: 15px;
-  border-top: 1px solid rgba(255,255,255,0.2);
+
+  border-top: 1px solid rgba(255,255,255,0.08);
+
   text-align: center;
+
+  padding: 15px;
+
+  background: rgba(255,255,255,0.02);
+
 }
 
 .footer-bottom p {
+
   font-size: 13px;
-  color: #e9d5ff;
+
+  color: rgba(255,255,255,0.6);
+
+}
+
+
+/* ===============================
+   RESPONSIVE DESIGN
+================================= */
+
+@media (max-width: 768px) {
+
+  .footer-content {
+
+    flex-direction: column;
+
+    text-align: center;
+
+  }
+
+  .footer-links {
+
+    justify-content: center;
+
+  }
+
 }

@@ -1,24 +1,153 @@
+/* ===============================
+   CATEGORY NAVIGATION CONTAINER
+================================= */
+
 .category-navigation {
-  background: white;
-  padding: 10px 40px;
-  border-bottom: 1px solid #ddd;
+
+  width: 100%;
+
+  display: flex;
+
+  justify-content: center;   /* ✅ center horizontally */
+
+  align-items: center;
+
+  padding: 16px 0;
+
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.95),
+    rgba(30, 41, 59, 0.95)
+  );
+
+  backdrop-filter: blur(12px);
+
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+
 }
+
+
+/* ===============================
+   CATEGORY LIST
+================================= */
 
 .category-list {
+
   list-style: none;
+
   display: flex;
+
+  justify-content: center;   /* ✅ ensures items are centered */
+
+  align-items: center;
+
   gap: 25px;
+
+  margin: 0;
+
+  padding: 0;
+
+  flex-wrap: wrap;
+
 }
+
+
+/* ===============================
+   CATEGORY ITEM
+================================= */
 
 .category-item {
+
+  padding: 10px 20px;
+
+  border-radius: 12px;
+
+  color: rgba(255,255,255,0.85);
+
+  font-size: 15px;
+
   font-weight: 500;
+
   cursor: pointer;
-  padding: 8px 12px;
-  border-radius: 20px;
-  transition: 0.3s ease;
+
+  background: rgba(255,255,255,0.05);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  transition: all 0.3s ease;
+
 }
 
+
+/* ===============================
+   HOVER EFFECT
+================================= */
+
 .category-item:hover {
-  background: #2a5298;
+
   color: white;
+
+  background: linear-gradient(90deg, #7c4dff, #00d4ff);
+
+  transform: translateY(-3px);
+
+  box-shadow: 0 6px 20px rgba(124,77,255,0.5);
+
+}
+
+
+/* ===============================
+   CLICK EFFECT
+================================= */
+
+.category-item:active {
+
+  transform: scale(0.95);
+
+}
+
+
+/* ===============================
+   ACTIVE CATEGORY (OPTIONAL)
+================================= */
+
+.category-item.active {
+
+  background: linear-gradient(90deg, #00d4ff, #7c4dff);
+
+  color: white;
+
+  box-shadow: 0 0 15px rgba(0,212,255,0.6);
+
+}
+
+
+/* ===============================
+   RESPONSIVE DESIGN
+================================= */
+
+@media (max-width: 768px) {
+
+  .category-navigation {
+
+    padding: 12px 10px;
+
+  }
+
+  .category-list {
+
+    gap: 12px;
+
+  }
+
+  .category-item {
+
+    font-size: 14px;
+
+    padding: 8px 14px;
+
+  }
+
 }

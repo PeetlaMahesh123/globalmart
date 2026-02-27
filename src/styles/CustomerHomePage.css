@@ -1,14 +1,77 @@
+/* ===============================
+   PAGE BACKGROUND
+================================= */
+
 .customer-homepage {
+
   min-height: 100vh;
+
   display: flex;
   flex-direction: column;
+
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+
+  font-family: "Segoe UI", Arial, sans-serif;
+
 }
 
-.navigation {
-  background: #fff;
+
+/* ===============================
+   NAVIGATION
+================================= */
+
+.navigation-container {
+
+  padding: 15px 40px;
+
+  background: rgba(255,255,255,0.05);
+
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+
 }
 
-.main-content {
+
+/* ===============================
+   MAIN CONTENT CONTAINER
+================================= */
+
+.main-content-container {
+
   flex: 1;
-  background: #f4f6f9;
+
+  padding: 40px 60px;
+
+  width: 100%;
+
+  max-width: 1400px;
+
+  margin: auto;
+
+}
+
+
+/* ===============================
+   LOADING
+================================= */
+
+.loading-container {
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  height: 300px;
+
+}
+
+.loading-container p {
+
+  color: white;
+
+  font-size: 20px;
+
+  font-weight: 500;
+
 }

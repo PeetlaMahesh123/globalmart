@@ -1,77 +1,214 @@
-const BASE_URL = "http://localhost:9092/api/cart";
+// ============================================
+// CART API SERVICE - FINAL WORKING VERSION
+// ============================================
 
-// ✅ ADD TO CART
-export const addToCart = async (data) => {
-  const res = await fetch(`${BASE_URL}/add`, {
+const BASE_URL = "http://localhost:9093/api/cart";
+
+
+// ============================================
+// SAFE RESPONSE PARSER
+// Handles JSON and plain number responses
+// ============================================
+async function parseResponse(response) {
+
+  const text = await response.text();
+
+  if (!text) return {};
+
+  try {
+    return JSON.parse(text);
+  } catch {
+    return Number(text);
+  }
+
+}
+
+
+// ============================================
+// ADD TO CART
+// ============================================
+export async function addToCart({ username, productId, quantity }) {
+
+  console.log("API → addToCart called:", {
+    username,
+    productId,
+    quantity
+  });
+
+  const response = await fetch(`${BASE_URL}/add`, {
+
     method: "POST",
+
     credentials: "include",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
+
+    headers: {
+      "Content-Type": "application/json"
+    },
+
+    body: JSON.stringify({
+      username: username,
+      productId: productId,
+      quantity: quantity
+    })
+
   });
 
-  if (!res.ok) {
+  console.log("API → addToCart status:", response.status);
+
+  if (!response.ok) {
+
+    const errorText = await response.text();
+
+    console.error("API ERROR:", errorText);
+
     throw new Error("Failed to add to cart");
+
   }
 
-  return res.text();
-};
+  const data = await parseResponse(response);
 
-// ✅ GET CART COUNT
-export const getCartCount = async (username) => {
-  const res = await fetch(
-    `${BASE_URL}/items/count?username=${username}`,
-    { credentials: "include" }
-  );
+  console.log("API → addToCart success:", data);
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch cart count");
-  }
+  return data;
+}
 
-  return res.json();
-};
 
-// ✅ GET CART ITEMS
-export const getCartItems = async (username) => {
-  const res = await fetch(
+// ============================================
+// GET CART COUNT (IMPORTANT FIX)
+// ============================================
+export async function getCartCount(username) {
+
+  console.log("API → getCartCount called:", username);
+
+  const response = await fetch(
     `${BASE_URL}/items?username=${username}`,
-    { credentials: "include" }
+    {
+      method: "GET",
+      credentials: "include"
+    }
   );
 
-  if (!res.ok) {
+  console.log("API → getCartCount status:", response.status);
+
+  if (!response.ok) {
+
+    throw new Error("Failed to fetch cart count");
+
+  }
+
+  const data = await parseResponse(response);
+
+  console.log("API → full cart response:", data);
+
+  let count = 0;
+
+  // CASE 1: Spring Boot returns { cart: { products: [] } }
+  if (data?.cart?.products) {
+
+    count = data.cart.products.length;
+
+  }
+
+  // CASE 2: returns { products: [] }
+  else if (data?.products) {
+
+    count = data.products.length;
+
+  }
+
+  // CASE 3: returns array directly
+  else if (Array.isArray(data)) {
+
+    count = data.length;
+
+  }
+
+  // CASE 4: returns number
+  else if (typeof data === "number") {
+
+    count = data;
+
+  }
+
+  console.log("API → final count:", count);
+
+  return { count };
+}
+
+
+// ============================================
+// GET CART ITEMS
+// ============================================
+export async function getCartItems(username) {
+
+  const response = await fetch(
+    `${BASE_URL}/items?username=${username}`,
+    {
+      credentials: "include"
+    }
+  );
+
+  if (!response.ok) {
+
     throw new Error("Failed to fetch cart items");
+
   }
 
-  return res.json();
-};
+  return await parseResponse(response);
+}
 
-// ✅ UPDATE CART
-export const updateCart = async (data) => {
-  const res = await fetch(`${BASE_URL}/update`, {
+
+// ============================================
+// UPDATE CART ITEM
+// ============================================
+export async function updateCart({ username, productId, quantity }) {
+
+  const response = await fetch(`${BASE_URL}/update`, {
+
     method: "PUT",
+
     credentials: "include",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
+
+    headers: {
+      "Content-Type": "application/json"
+    },
+
+    body: JSON.stringify({
+      username,
+      productId,
+      quantity
+    })
+
   });
 
-  if (!res.ok) {
+  if (!response.ok) {
+
     throw new Error("Failed to update cart");
+
   }
 
-  return res.text();
-};
+  return await parseResponse(response);
+}
 
-// ✅ DELETE CART ITEM
-export const deleteFromCart = async (data) => {
-  const res = await fetch(`${BASE_URL}/delete`, {
-    method: "DELETE",
-    credentials: "include",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  });
 
-  if (!res.ok) {
-    throw new Error("Failed to delete item");
+// ============================================
+// DELETE CART ITEM
+// ============================================
+export async function deleteFromCart(productId, username) {
+
+  const response = await fetch(
+    `${BASE_URL}/${productId}?username=${username}`,
+    {
+      method: "DELETE",
+      credentials: "include"
+    }
+  );
+
+  if (!response.ok) {
+
+    throw new Error("Failed to delete cart item");
+
   }
 
-  return res.text();
-};
+  return await parseResponse(response);
+}
