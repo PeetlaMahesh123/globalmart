@@ -1,113 +1,242 @@
-/* 🔹 Main Header */
+/* ===============================
+   MAIN HEADER
+================================= */
+
 .header {
-  background: linear-gradient(135deg, #1e3c72, #2a5298);
-  padding: 14px 50px;
-  color: white;
+
   position: sticky;
+
   top: 0;
+
+  width: 100%;
+
   z-index: 1000;
 
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.95),
+    rgba(30, 41, 59, 0.95)
+  );
+
+  backdrop-filter: blur(12px);
+
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+
 }
 
-/* 🔹 Header Content Layout */
+
+/* ===============================
+   HEADER CONTENT CONTAINER
+================================= */
+
 .header-content {
+
+  max-width: 1400px;
+
+  margin: auto;
+
+  padding: 12px 40px;
+
   display: flex;
+
+  align-items: center;
+
   justify-content: space-between;
-  align-items: center;
+
 }
 
-/* 🔹 Right Section */
+
+/* ===============================
+   RIGHT SIDE ACTIONS
+================================= */
+
 .header-actions {
+
   display: flex;
+
   align-items: center;
+
   gap: 25px;
+
 }
 
-/* 🔹 Logo Container */
-.logo-container {
-  display: flex;
-  align-items: center;
-}
 
-/* 🔹 Logo Styling */
+/* ===============================
+   LOGO STYLING (if text logo)
+================================= */
+
 .logo {
-  font-size: 26px;
-  font-weight: 700;
-  letter-spacing: 1.2px;
-  color: #ffffff;
+
+  font-size: 24px;
+
+  font-weight: bold;
+
+  background: linear-gradient(90deg, #7c4dff, #00d4ff);
+
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
   cursor: pointer;
-  transition: all 0.3s ease;
+
+  transition: 0.3s;
+
 }
 
-/* 🔥 Logo Hover Effect */
 .logo:hover {
-  color: #ffcc00;
+
   transform: scale(1.05);
+
 }
 
-/* 🔹 Cart Icon Styling */
-.cart-icon {
+
+/* ===============================
+   CART ICON CONTAINER
+================================= */
+
+.cart-icon-container {
+
   position: relative;
+
   cursor: pointer;
-  transition: transform 0.2s ease;
+
+  padding: 8px;
+
+  border-radius: 10px;
+
+  transition: 0.3s;
+
 }
 
-.cart-icon:hover {
+.cart-icon-container:hover {
+
+  background: rgba(255,255,255,0.08);
+
   transform: scale(1.1);
+
 }
 
-/* 🔹 Cart Badge */
-.cart-badge {
+
+/* ===============================
+   CART COUNT BADGE
+================================= */
+
+.cart-count {
+
   position: absolute;
+
   top: -6px;
-  right: -8px;
-  background-color: #ff3b3b;
+
+  right: -6px;
+
+  background: linear-gradient(90deg, #ff4d6d, #ff0000);
+
   color: white;
+
   font-size: 12px;
-  font-weight: 600;
-  padding: 4px 7px;
+
+  font-weight: bold;
+
+  padding: 3px 7px;
+
   border-radius: 50%;
-  box-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
-  animation: pulse 1.5s infinite;
+
+  box-shadow: 0 0 8px rgba(255,0,0,0.6);
+
 }
 
-/* 🔥 Badge Pulse Animation */
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.15);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
 
-/* 🔹 Profile Dropdown Smooth Effect */
-.profile-dropdown {
+/* ===============================
+   PROFILE SECTION
+================================= */
+
+.profile-container {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 8px 14px;
+
+  border-radius: 12px;
+
   cursor: pointer;
-  transition: transform 0.2s ease;
+
+  background: rgba(255,255,255,0.05);
+
+  transition: 0.3s;
+
 }
 
-.profile-dropdown:hover {
-  transform: scale(1.05);
+.profile-container:hover {
+
+  background: rgba(255,255,255,0.12);
+
 }
 
-/* 🔹 Responsive */
+
+/* ===============================
+   USERNAME TEXT
+================================= */
+
+.username {
+
+  color: white;
+
+  font-weight: 500;
+
+  font-size: 15px;
+
+}
+
+
+/* ===============================
+   PROFILE ICON
+================================= */
+
+.profile-icon {
+
+  width: 32px;
+
+  height: 32px;
+
+  border-radius: 50%;
+
+  background: linear-gradient(135deg, #7c4dff, #00d4ff);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color: white;
+
+  font-weight: bold;
+
+}
+
+
+/* ===============================
+   RESPONSIVE DESIGN
+================================= */
+
 @media (max-width: 768px) {
-  .header {
+
+  .header-content {
+
     padding: 12px 20px;
+
   }
 
-  .logo {
-    font-size: 20px;
+  .username {
+
+    display: none;
+
   }
 
-  .header-actions {
-    gap: 15px;
-  }
 }
