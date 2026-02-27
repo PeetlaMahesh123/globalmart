@@ -4,30 +4,33 @@ import { ProductList } from "../components/ProductList";
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
 import "../styles/CustomerHomePage.css";
-
-import {
-  addToCart,
-  getCartCount,
-} from "../api/cartApi";
+import { addToCart, getCartCount } from "../api/cartApi";
 
 export default function CustomerHomePage() {
+
   const [products, setProducts] = useState([]);
   const [cartCount, setCartCount] = useState(0);
   const [username, setUsername] = useState("");
-  const [isCartLoading, setIsCartLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
-  // 🔹 Load products on first render
+  // ===============================
+  // LOAD PRODUCTS ON PAGE LOAD
+  // ===============================
   useEffect(() => {
     fetchProducts("Shirts");
   }, []);
 
-  // 🔹 Fetch Products
+  // ===============================
+  // FETCH PRODUCTS
+  // ===============================
   const fetchProducts = async (category = "") => {
+
     try {
+
+      setLoading(true);
+
       const response = await fetch(
-        `http://localhost:9092/api/products${
-          category ? `?category=${category}` : ""
-        }`,
+        `http://localhost:9093/api/products?category=${category}`,
         { credentials: "include" }
       );
 
@@ -37,88 +40,115 @@ export default function CustomerHomePage() {
 
       const data = await response.json();
 
+      console.log("Products:", data);
+
       const loggedUser = data?.user?.name || "";
+
       setUsername(loggedUser);
+
       setProducts(data?.products || []);
 
+      // fetch cart count
       if (loggedUser) {
-        await fetchCartCount(loggedUser);
+        fetchCartCount(loggedUser);
+      }
+
+    }
+    catch (error) {
+      console.error("Fetch products error:", error);
+    }
+    finally {
+      setLoading(false);
+    }
+
+  };
+
+  // ===============================
+  // FETCH CART COUNT
+  // ===============================
+  const fetchCartCount = async (user) => {
+
+    try {
+
+      const result = await getCartCount(user);
+
+      if (result && typeof result.count === "number") {
+        setCartCount(result.count);
       } else {
         setCartCount(0);
       }
 
-    } catch (error) {
-      console.error("Error fetching products:", error);
-      setProducts([]);
     }
-  };
+    catch (error) {
 
-  // 🔹 Fetch Cart Count
-  const fetchCartCount = async (user) => {
-    try {
-      setIsCartLoading(true);
-
-      const count = await getCartCount(user);
-
-      console.log("Cart count from backend:", count); // 🔥 DEBUG
-
-      setCartCount(count ?? 0);
-
-    } catch (error) {
-      console.error("Error fetching cart count:", error);
+      console.error("Cart count error:", error);
       setCartCount(0);
-    } finally {
-      setIsCartLoading(false);
+
     }
+
   };
 
-  // 🔹 Category Click
-  const handleCategoryClick = (category) => {
-    fetchProducts(category);
-  };
-
-  // 🔹 Add to Cart
+  // ===============================
+  // ADD TO CART
+  // ===============================
   const handleAddToCart = async (productId) => {
-    if (!username) {
-      alert("Please login first");
-      return;
-    }
 
     try {
+
       await addToCart({
         username,
         productId,
-        quantity: 1,
+        quantity: 1
       });
 
-      console.log("Product added, refreshing count..."); // 🔥 DEBUG
+      fetchCartCount(username);
 
-      await fetchCartCount(username); // 🔥 IMPORTANT
-
-    } catch (error) {
-      console.error("Error adding product:", error);
     }
+    catch (error) {
+      console.error("Add to cart error:", error);
+    }
+
   };
 
+  // ===============================
+  // UI
+  // ===============================
   return (
+
     <div className="customer-homepage">
+
+      {/* HEADER */}
       <Header
-        cartCount={isCartLoading ? "..." : cartCount}
+        cartCount={cartCount}
         username={username || "Guest"}
       />
 
-      <nav className="navigation">
-        <CategoryNavigation onCategoryClick={handleCategoryClick} />
-      </nav>
+      {/* CATEGORY NAVIGATION */}
+      <div className="navigation-container">
+        <CategoryNavigation onCategoryClick={fetchProducts} />
+      </div>
 
-      <main className="main-content">
-        <ProductList
-          products={products}
-          onAddToCart={handleAddToCart}
-        />
-      </main>
+      {/* MAIN CONTENT */}
+      <div className="main-content-container">
 
+        {loading ? (
+          <div className="loading-container">
+            <p>Loading products...</p>
+          </div>
+        ) : (
+          <ProductList
+            products={products}
+            onAddToCart={handleAddToCart}
+          />
+        )}
+
+      </div>
+
+      {/* FOOTER */}
       <Footer />
+
     </div>
+
   );
+
 }
