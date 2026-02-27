@@ -1,62 +1,91 @@
-import React, { useState } from 'react';
-import '../styles/ProductList.css';
+import React, { useState } from "react";
+import "../styles/ProductList.css";
 
 export function ProductList({ products, onAddToCart }) {
 
   const [loadingId, setLoadingId] = useState(null);
 
   if (!products || products.length === 0) {
-    return <p>No products available.</p>;
+    return <p className="no-products">No products available.</p>;
   }
 
   const handleClick = async (productId) => {
+
+    console.log("BUTTON CLICKED:", productId);
+
     setLoadingId(productId);
 
     try {
       await onAddToCart(productId);
-    } finally {
-      setLoadingId(null);
     }
+    catch (error) {
+      console.error(error);
+    }
+
+    setLoadingId(null);
   };
 
   return (
+
     <div className="product-grid">
-      {products.map((product) => {
+
+      {products.map((product, index) => {
 
         const imageUrl =
-          product.images && product.images.length > 0
-            ? product.images[0]
-            : 'https://via.placeholder.com/200';
+          product.images?.[0] ||
+          "https://placehold.co/300x300";
 
         return (
-          <div key={product.product_id} className="product-card">
 
-            <div className="product-image">
+          <div
+            key={`${product.product_id}-${index}`}
+            className="product-card"
+          >
+
+            {/* IMAGE */}
+            <div className="image-container">
+
               <img
                 src={imageUrl}
                 alt={product.name}
-                loading="lazy"
-                onError={(e) => {
-                  e.target.src = 'https://via.placeholder.com/200';
-                }}
+                className="product-image"
               />
+
             </div>
 
-            <h3>{product.name}</h3>
+            {/* NAME */}
+            <h3 className="product-name">
+              {product.name}
+            </h3>
 
-            {/* Better price format */}
-            <p>₹{Number(product.price).toFixed(2)}</p>
+            {/* PRICE */}
+            <p className="product-price">
+              ₹{Number(product.price).toFixed(2)}
+            </p>
 
+            {/* BUTTON */}
             <button
-              onClick={() => handleClick(product.product_id)}
+              type="button"
+              className="add-cart-btn"
+              onClick={(e) => {
+                e.stopPropagation();
+                handleClick(product.product_id);
+              }}
               disabled={loadingId === product.product_id}
             >
-              {loadingId === product.product_id ? "Adding..." : "Add to Cart"}
+              {loadingId === product.product_id
+                ? "Adding..."
+                : "Add to Cart"}
             </button>
 
           </div>
+
         );
+
       })}
+
     </div>
+
   );
+
 }
