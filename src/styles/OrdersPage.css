@@ -1,0 +1,282 @@
+/* ===============================
+   PAGE CONTAINER
+================================= */
+
+.customer-homepage {
+
+  min-height: 100vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  background: linear-gradient(
+    135deg,
+    #0f172a,
+    #1e293b
+  );
+
+  font-family: "Segoe UI", Arial, sans-serif;
+
+}
+
+
+/* ===============================
+   MAIN CONTENT
+================================= */
+
+.main-content {
+
+  flex: 1;
+
+  padding: 40px;
+
+  max-width: 1200px;
+
+  margin: auto;
+
+  width: 100%;
+
+}
+
+
+/* ===============================
+   PAGE TITLE
+================================= */
+
+.form-title {
+
+  color: white;
+
+  font-size: 32px;
+
+  font-weight: bold;
+
+  margin-bottom: 30px;
+
+  text-align: center;
+
+  background: linear-gradient(90deg, #7c4dff, #00d4ff);
+
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+}
+
+
+/* ===============================
+   STATUS MESSAGES
+================================= */
+
+.loading-message,
+.error-message,
+.no-orders {
+
+  text-align: center;
+
+  font-size: 18px;
+
+  margin-top: 20px;
+
+}
+
+.loading-message {
+
+  color: #00d4ff;
+
+}
+
+.error-message {
+
+  color: #ff4d6d;
+
+}
+
+.no-orders {
+
+  color: #cbd5e1;
+
+}
+
+
+/* ===============================
+   ORDERS LIST GRID
+================================= */
+
+.orders-list {
+
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+
+  gap: 25px;
+
+}
+
+
+/* ===============================
+   ORDER CARD
+================================= */
+
+.order-card {
+
+  background: linear-gradient(
+    145deg,
+    rgba(30, 41, 59, 0.9),
+    rgba(51, 65, 85, 0.9)
+  );
+
+  border-radius: 16px;
+
+  padding: 20px;
+
+  color: white;
+
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+
+  transition: 0.3s;
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+}
+
+.order-card:hover {
+
+  transform: translateY(-5px);
+
+  box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+
+}
+
+
+/* ===============================
+   ORDER HEADER
+================================= */
+
+.order-card-header {
+
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+
+  padding-bottom: 10px;
+
+  margin-bottom: 15px;
+
+}
+
+.order-card-header h3 {
+
+  font-size: 18px;
+
+  color: #00d4ff;
+
+}
+
+
+/* ===============================
+   ORDER BODY
+================================= */
+
+.order-card-body {
+
+  display: flex;
+
+  gap: 20px;
+
+  align-items: center;
+
+}
+
+
+/* ===============================
+   PRODUCT IMAGE
+================================= */
+
+.order-product-image {
+
+  width: 100px;
+
+  height: 100px;
+
+  object-fit: contain;
+
+  background: rgba(255,255,255,0.05);
+
+  border-radius: 10px;
+
+  padding: 10px;
+
+}
+
+
+/* ===============================
+   ORDER DETAILS
+================================= */
+
+.order-details {
+
+  flex: 1;
+
+}
+
+.order-details h3 {
+
+  font-size: 18px;
+
+  margin-bottom: 8px;
+
+}
+
+.order-details p {
+
+  font-size: 14px;
+
+  color: #cbd5e1;
+
+  margin: 3px 0;
+
+}
+
+
+/* ===============================
+   RESPONSIVE DESIGN
+================================= */
+
+/* Tablet */
+@media (max-width: 768px) {
+
+  .main-content {
+
+    padding: 20px;
+
+  }
+
+  .orders-list {
+
+    grid-template-columns: 1fr;
+
+  }
+
+}
+
+
+/* Mobile */
+@media (max-width: 500px) {
+
+  .order-card-body {
+
+    flex-direction: column;
+
+    text-align: center;
+
+  }
+
+  .order-product-image {
+
+    width: 140px;
+
+    height: 140px;
+
+  }
+
+}
