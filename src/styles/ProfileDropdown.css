@@ -1,92 +1,219 @@
-/* Container */
+/* ===============================
+   PROFILE DROPDOWN CONTAINER
+================================= */
+
 .profile-dropdown {
+
   position: relative;
+
   display: inline-block;
+
 }
 
-/* Profile Button */
-.profile-dropdown button {
-  background: transparent;
-  border: none;
-  color: white;
+
+/* ===============================
+   PROFILE BUTTON
+================================= */
+
+.profile-btn {
+
   display: flex;
+
   align-items: center;
-  gap: 8px;
-  font-weight: 500;
-  font-size: 14px;
+
+  gap: 10px;
+
+  background: rgba(255,255,255,0.05);
+
+  border: 1px solid rgba(255,255,255,0.1);
+
+  border-radius: 12px;
+
+  padding: 6px 12px;
+
   cursor: pointer;
-  padding: 6px 10px;
-  transition: background 0.2s ease;
+
+  transition: all 0.3s ease;
+
 }
 
-.profile-dropdown button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 6px;
+.profile-btn:hover {
+
+  background: rgba(255,255,255,0.1);
+
+  transform: translateY(-1px);
+
 }
 
-/* Avatar Image */
-.profile-dropdown img {
-  width: 32px;
-  height: 32px;
+
+/* ===============================
+   PROFILE AVATAR
+================================= */
+
+.profile-avatar {
+
+  width: 34px;
+
+  height: 34px;
+
   border-radius: 50%;
-  object-fit: cover;      /* Prevent blur */
-  object-position: center;
-  border: 2px solid white;
+
+  object-fit: cover;
+
+  border: 2px solid transparent;
+
+  background: linear-gradient(135deg, #7c4dff, #00d4ff);
+
+  padding: 2px;
+
 }
 
-/* Dropdown Menu */
-.dropdown-menu {
-  position: absolute;
-  right: 0;
-  top: 45px;
-  background: white;
-  color: black;
-  width: 170px;
-  border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  display: flex;
-  flex-direction: column;
-  padding: 8px 0;
-  z-index: 1000;
-  animation: dropdownFade 0.2s ease-in-out;
-}
 
-/* Dropdown Items */
-.dropdown-menu a,
-.dropdown-menu button {
-  padding: 10px 15px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  text-align: left;
-  font-size: 14px;
-  transition: background 0.2s ease;
-}
+/* ===============================
+   USERNAME TEXT
+================================= */
 
-.dropdown-menu a {
-  text-decoration: none;
-  color: black;
-}
+.profile-name {
 
-.dropdown-menu a:hover,
-.dropdown-menu button:hover {
-  background: #f3f3f3;
-}
+  color: white;
 
-/* Logout Button Styling */
-.dropdown-menu button:last-child {
-  color: red;
+  font-size: 15px;
+
   font-weight: 500;
+
 }
 
-/* Smooth animation */
+
+/* ===============================
+   DROPDOWN MENU
+================================= */
+
+.dropdown-menu {
+
+  position: absolute;
+
+  top: 110%;
+
+  right: 0;
+
+  width: 180px;
+
+  background: rgba(30, 41, 59, 0.95);
+
+  backdrop-filter: blur(12px);
+
+  border-radius: 12px;
+
+  border: 1px solid rgba(255,255,255,0.1);
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+
+  padding: 8px 0;
+
+  animation: dropdownFade 0.25s ease;
+
+  z-index: 1000;
+
+}
+
+
+/* ===============================
+   DROPDOWN ITEMS
+================================= */
+
+.dropdown-item {
+
+  width: 100%;
+
+  padding: 12px 16px;
+
+  background: transparent;
+
+  border: none;
+
+  text-align: left;
+
+  color: white;
+
+  font-size: 14px;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+
+}
+
+.dropdown-item:hover {
+
+  background: linear-gradient(
+    90deg,
+    rgba(124,77,255,0.2),
+    rgba(0,212,255,0.2)
+  );
+
+  padding-left: 20px;
+
+}
+
+
+/* ===============================
+   LOGOUT BUTTON SPECIAL STYLE
+================================= */
+
+.dropdown-item.logout {
+
+  color: #ff4d6d;
+
+}
+
+.dropdown-item.logout:hover {
+
+  background: rgba(255,77,109,0.15);
+
+}
+
+
+/* ===============================
+   ANIMATION
+================================= */
+
 @keyframes dropdownFade {
+
   from {
+
     opacity: 0;
-    transform: translateY(-5px);
+
+    transform: translateY(-10px);
+
   }
+
   to {
+
     opacity: 1;
+
     transform: translateY(0);
+
   }
+
+}
+
+
+/* ===============================
+   RESPONSIVE DESIGN
+================================= */
+
+@media (max-width: 768px) {
+
+  .profile-name {
+
+    display: none;
+
+  }
+
+  .dropdown-menu {
+
+    width: 160px;
+
+  }
+
 }
