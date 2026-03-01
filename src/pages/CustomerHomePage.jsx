@@ -30,7 +30,7 @@ export default function CustomerHomePage() {
       setLoading(true);
 
       const response = await fetch(
-        `http://localhost:9093/api/products?category=${category}`,
+        `http://localhost:9096/api/products?category=${category}`,
         { credentials: "include" }
       );
 

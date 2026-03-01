@@ -2,7 +2,7 @@
 // CART API SERVICE - FINAL WORKING VERSION
 // ============================================
 
-const BASE_URL = "http://localhost:9093/api/cart";
+const BASE_URL = "http://localhost:9096/api/cart";
 
 
 // ============================================

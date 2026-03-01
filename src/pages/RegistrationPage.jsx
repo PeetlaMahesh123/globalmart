@@ -63,7 +63,7 @@ const RegistrationPage = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:9093/api/users/register",   // ✅ Correct Backend URL
+        "http://localhost:9096/api/users/register",   // ✅ Correct Backend URL
         {
           method: "POST",
           headers: {

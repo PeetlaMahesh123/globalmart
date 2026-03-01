@@ -50,7 +50,7 @@ export function CartPage() {
     try {
 
       const userResponse = await fetch(
-        "http://localhost:9093/api/products?category=Shirts",
+        "http://localhost:9096/api/products?category=Shirts",
         { credentials: "include" }
       );
 
@@ -66,7 +66,7 @@ export function CartPage() {
       setUsername(loggedUser);
 
       const cartResponse = await fetch(
-        `http://localhost:9093/api/cart/items?username=${loggedUser}`,
+        `http://localhost:9096/api/cart/items?username=${loggedUser}`,
         { credentials: "include" }
       );
 
@@ -133,7 +133,7 @@ export function CartPage() {
     try {
 
       const response = await fetch(
-        "http://localhost:9093/api/cart/delete",
+        "http://localhost:9096/api/cart/delete",
         {
           method: "DELETE",
           credentials: "include",
@@ -196,7 +196,7 @@ export function CartPage() {
     try {
 
       const response = await fetch(
-        "http://localhost:9093/api/cart/update",
+        "http://localhost:9096/api/cart/update",
         {
           method: "PUT",
           credentials: "include",
@@ -229,70 +229,117 @@ export function CartPage() {
   // ===============================
   // CHECKOUT
   // ===============================
-  const handleCheckout = async () => {
+// ===============================
+// CHECKOUT (FIXED)
+// ===============================
+const handleCheckout = async () => {
 
-    if (checkoutLoading) return;
+  if (checkoutLoading) return;
 
-    setCheckoutLoading(true);
+  setCheckoutLoading(true);
 
-    try {
+  try {
 
-      const response = await fetch(
-        "http://localhost:9093/api/payment/create",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          credentials: "include",
-          body: JSON.stringify({
-            totalAmount: overallPrice,
-            cartItems: cartItems.map(item => ({
-              productId: item.product_id,
-              quantity: item.quantity,
-              price: item.price_per_unit
-            }))
-          })
+    const response = await fetch(
+      "http://localhost:9096/api/payment/create",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        credentials: "include",
+        body: JSON.stringify({
+          totalAmount: overallPrice,
+          cartItems: cartItems.map(item => ({
+            productId: item.product_id,
+            quantity: item.quantity,
+            price: item.price_per_unit
+          }))
+        })
+      }
+    );
+
+    const orderId = await response.text();
+
+    const options = {
+
+      key: "rzp_test_LqWBBDbgwot5lh",
+
+      amount: overallPrice * 100,
+
+      currency: "INR",
+
+      name: "GlobalMart",
+
+      order_id: orderId,
+
+
+      // ✅ FIXED HANDLER
+      handler: async function (response) {
+
+        try {
+
+          // VERIFY PAYMENT WITH BACKEND
+          const verifyResponse = await fetch(
+            "http://localhost:9096/api/payment/verify",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              credentials: "include",
+              body: JSON.stringify({
+                razorpayOrderId: response.razorpay_order_id,
+                razorpayPaymentId: response.razorpay_payment_id,
+                razorpaySignature: response.razorpay_signature
+              })
+            }
+          );
+
+          if (verifyResponse.ok) {
+
+            alert("Payment Successful ✅");
+
+            // refresh cart
+            setCartItems([]);
+
+            navigate("/orders");
+
+          }
+          else {
+
+            alert("Payment verification failed");
+
+          }
+
         }
-      );
+        catch(error) {
 
-      const orderId = await response.text();
+          console.error(error);
 
-      const options = {
-
-        key: "rzp_test_LqWBBDbgwot5lh",
-
-        amount: overallPrice * 100,
-
-        currency: "INR",
-
-        name: "GlobalMart",
-
-        order_id: orderId,
-
-        handler: () => {
-
-          alert("Payment Successful ✅");
-
-          navigate("/home");
+          alert("Verification error");
 
         }
 
-      };
+      }
 
-      new window.Razorpay(options).open();
+    };
 
-    }
-    catch {
-      alert("Payment failed");
-    }
-    finally {
-      setCheckoutLoading(false);
-    }
+    new window.Razorpay(options).open();
 
-  };
+  }
+  catch {
 
+    alert("Payment failed");
 
+  }
+  finally {
+
+    setCheckoutLoading(false);
+
+  }
+
+};
   // ===============================
   // UI
   // ===============================

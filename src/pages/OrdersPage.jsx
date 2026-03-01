@@ -39,7 +39,7 @@ export default function OrdersPage() {
 
       // STEP 1: Get logged user (same as CartPage)
       const userResponse = await fetch(
-        "http://localhost:9093/api/products?category=Shirts",
+        "http://localhost:9096/api/products?category=Shirts",
         {
           credentials: "include"
         }
@@ -69,7 +69,7 @@ export default function OrdersPage() {
 
       // STEP 2: Fetch Orders
       const ordersResponse = await fetch(
-        `http://localhost:9093/api/orders?username=${loggedUser}`,
+        `http://localhost:9096/api/orders?username=${loggedUser}`,
         {
           credentials: "include"
         }
@@ -93,7 +93,7 @@ export default function OrdersPage() {
 
       // STEP 3: Fetch cart count
       const cartResponse = await fetch(
-        `http://localhost:9093/api/cart/items?username=${loggedUser}`,
+        `http://localhost:9096/api/cart/items?username=${loggedUser}`,
         {
           credentials: "include"
         }

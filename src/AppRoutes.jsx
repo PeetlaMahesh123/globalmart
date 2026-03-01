@@ -6,6 +6,8 @@ import RegistrationPage from './pages/RegistrationPage';
 import CustomerHome from "./pages/CustomerHomePage";
 import { CartPage } from "./pages/CartPage";
 import OrdersPage from "./pages/OrdersPage";
+import AdminDashboard from "./pages/AdminDashBoard";
+import AdminLogin from "./pages/AdminLogin";
 
 const AppRoutes = () => {
   return (
@@ -24,6 +26,11 @@ const AppRoutes = () => {
 
       {/* ✅ Orders route */}
       <Route path="/orders" element={<OrdersPage />} />
+
+      {/* ✅ Admin dashboard route */}
+      <Route path="/adminhome" element={<AdminDashboard />} />
+      
+      <Route path="/admin" element={<AdminLogin />} />
     </Routes>
   );
 };

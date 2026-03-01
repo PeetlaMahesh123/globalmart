@@ -1,0 +1,242 @@
+/* ================================
+   MODAL OVERLAY
+================================ */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: rgba(5, 15, 35, 0.85);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1000;
+
+  backdrop-filter: blur(4px);
+}
+
+
+/* ================================
+   MODAL CONTAINER
+================================ */
+.modal-content {
+
+  width: 520px;
+  max-width: 95%;
+
+  max-height: 90vh;
+  overflow-y: auto;
+
+  padding: 30px;
+
+  border-radius: 14px;
+
+  background: linear-gradient(
+    145deg,
+    #142850,
+    #0e1d3a
+  );
+
+  box-shadow:
+    0 10px 40px rgba(0,0,0,0.6);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  color: white;
+}
+
+
+/* ================================
+   TITLE
+================================ */
+.modal-content h2 {
+
+  text-align: center;
+
+  margin-bottom: 25px;
+
+  font-size: 26px;
+
+  font-weight: 700;
+
+  background: linear-gradient(90deg,#7c5cff,#00e0ff);
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* ================================
+   FORM
+================================ */
+.modal-form {
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 18px;
+
+}
+
+
+/* ================================
+   FORM ITEM
+================================ */
+.modal-form-item {
+
+  display: flex;
+  flex-direction: column;
+
+}
+
+
+.modal-form-item label {
+
+  margin-bottom: 6px;
+
+  font-size: 14px;
+
+  color: #cbd5e1;
+
+}
+
+
+/* ================================
+   INPUT FIELD
+================================ */
+.modal-form-item input,
+.modal-form-item textarea {
+
+  padding: 12px;
+
+  border-radius: 8px;
+
+  border: 1px solid rgba(255,255,255,0.15);
+
+  background: #0b1a35;
+
+  color: white;
+
+  font-size: 14px;
+
+  outline: none;
+
+  transition: 0.2s;
+}
+
+
+.modal-form-item input:focus,
+.modal-form-item textarea:focus {
+
+  border: 1px solid #00e0ff;
+
+  box-shadow: 0 0 6px rgba(0,224,255,0.4);
+
+}
+
+
+/* ================================
+   TEXTAREA HEIGHT
+================================ */
+.modal-form-item textarea {
+
+  min-height: 90px;
+
+  resize: vertical;
+
+}
+
+
+/* ================================
+   BUTTON CONTAINER
+================================ */
+.modal-content button {
+
+  margin-top: 12px;
+  margin-right: 10px;
+
+  padding: 10px 20px;
+
+  border-radius: 8px;
+
+  border: none;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+
+}
+
+
+/* Submit button */
+.modal-content button:first-of-type {
+
+  background: linear-gradient(90deg,#7c5cff,#00c6ff);
+
+  color: white;
+
+}
+
+.modal-content button:first-of-type:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 6px 18px rgba(0,198,255,0.35);
+
+}
+
+
+/* Cancel button */
+.modal-content button:last-of-type {
+
+  background: linear-gradient(90deg,#ff4b4b,#ff7b7b);
+
+  color: white;
+
+}
+
+.modal-content button:last-of-type:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 6px 18px rgba(255,75,75,0.35);
+
+}
+
+
+/* ================================
+   SCROLLBAR
+================================ */
+.modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: #00c6ff;
+  border-radius: 10px;
+}
+
+
+/* ================================
+   RESPONSIVE
+================================ */
+@media (max-width:600px) {
+
+  .modal-content {
+
+    width: 95%;
+
+    padding: 20px;
+
+  }
+
+}
