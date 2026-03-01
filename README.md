@@ -50,6 +50,7 @@ netlify deploy link: https://zippy-parfait-f89cac.netlify.app/
 - CSS
 
 ### Backend
+- Java
 - Spring Boot
 - Spring Security
 - Hibernate / JPA
