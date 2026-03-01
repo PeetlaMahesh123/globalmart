@@ -6,7 +6,7 @@ import RegistrationPage from './pages/RegistrationPage';
 import CustomerHome from "./pages/CustomerHomePage";
 import { CartPage } from "./pages/CartPage";
 import OrdersPage from "./pages/OrdersPage";
-import AdminDashboard from "./pages/AdminDashBoard";
+import AdminDashboard from "./pages/AdminDashboard";
 import AdminLogin from "./pages/AdminLogin";
 
 const AppRoutes = () => {
