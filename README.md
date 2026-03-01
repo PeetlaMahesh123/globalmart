@@ -25,7 +25,8 @@ netlify deploy link: https://zippy-parfait-f89cac.netlify.app/
 <img width="1922" height="831" alt="Screenshot 2026-03-01 122344" src="https://github.com/user-attachments/assets/131dd48a-bb63-4eb5-a559-3d0b1538ed7c" />
 
 ---
-<img width="1922" height="928" alt="Screenshot 2026-03-01 122259" src="https://github.com/user-attachments/assets/00b0e304-4dc5-4b73-9900-bc3053d0e009" />
+<img width="1917" height="923" alt="Screenshot 2026-03-01 122157" src="https://github.com/user-attachments/assets/89ba573e-0174-4b18-815a-9f51a266bbdb" />
+
 
 ---
 ## 🚀 Features
