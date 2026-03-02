@@ -8,8 +8,6 @@ The application is built using React for the frontend and Spring Boot with MySQL
 ## Live Link of Project:
 Github deploy link: https://peetlamahesh123.github.io/globalmart/
 
----
-netlify deploy link: https://zippy-parfait-f89cac.netlify.app/
 
 
 ---
