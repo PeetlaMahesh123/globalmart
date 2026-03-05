@@ -1,6 +1,6 @@
 // CustomModal.jsx
 import React, { useEffect, useState } from "react";
-import "../styles/CustomModal.css";
+import "./styles/CustomModal.css";
 
 const CustomModal = ({ modalType, onClose, onSubmit, response }) => {
   const [formData, setFormData] = useState({

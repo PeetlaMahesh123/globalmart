@@ -1,218 +1,288 @@
-/* ===============================
-   PROFILE DROPDOWN CONTAINER
-================================= */
+/* ================================= */
+/* PROFILE DROPDOWN CONTAINER */
+/* ================================= */
 
-.profile-dropdown {
+.profile-dropdown{
 
-  position: relative;
+  position:relative;
 
-  display: inline-block;
+  display:flex;
 
-}
-
-
-/* ===============================
-   PROFILE BUTTON
-================================= */
-
-.profile-btn {
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 10px;
-
-  background: rgba(255,255,255,0.05);
-
-  border: 1px solid rgba(255,255,255,0.1);
-
-  border-radius: 12px;
-
-  padding: 6px 12px;
-
-  cursor: pointer;
-
-  transition: all 0.3s ease;
-
-}
-
-.profile-btn:hover {
-
-  background: rgba(255,255,255,0.1);
-
-  transform: translateY(-1px);
+  align-items:center;
 
 }
 
 
-/* ===============================
-   PROFILE AVATAR
-================================= */
+/* ================================= */
+/* PROFILE BUTTON */
+/* ================================= */
 
-.profile-avatar {
+.profile-button{
 
-  width: 34px;
+  display:flex;
 
-  height: 34px;
+  align-items:center;
 
-  border-radius: 50%;
+  gap:8px;
 
-  object-fit: cover;
+  background:rgba(30,41,59,0.9);
 
-  border: 2px solid transparent;
+  border:1px solid rgba(255,255,255,0.08);
 
-  background: linear-gradient(135deg, #7c4dff, #00d4ff);
+  padding:6px 12px;
 
-  padding: 2px;
+  border-radius:22px;
 
-}
+  cursor:pointer;
 
+  color:white;
 
-/* ===============================
-   USERNAME TEXT
-================================= */
+  font-size:14px;
 
-.profile-name {
-
-  color: white;
-
-  font-size: 15px;
-
-  font-weight: 500;
+  transition:all 0.25s ease;
 
 }
 
 
-/* ===============================
-   DROPDOWN MENU
-================================= */
+/* BUTTON HOVER */
 
-.dropdown-menu {
+.profile-button:hover{
 
-  position: absolute;
+  background:rgba(51,65,85,0.9);
 
-  top: 110%;
-
-  right: 0;
-
-  width: 180px;
-
-  background: rgba(30, 41, 59, 0.95);
-
-  backdrop-filter: blur(12px);
-
-  border-radius: 12px;
-
-  border: 1px solid rgba(255,255,255,0.1);
-
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-
-  padding: 8px 0;
-
-  animation: dropdownFade 0.25s ease;
-
-  z-index: 1000;
+  border-color:rgba(99,102,241,0.6);
 
 }
 
 
-/* ===============================
-   DROPDOWN ITEMS
-================================= */
+/* ================================= */
+/* USER AVATAR */
+/* ================================= */
 
-.dropdown-item {
+.user-avatar{
 
-  width: 100%;
+  width:30px;
 
-  padding: 12px 16px;
+  height:30px;
 
-  background: transparent;
+  border-radius:50%;
 
-  border: none;
+  object-fit:cover;
 
-  text-align: left;
-
-  color: white;
-
-  font-size: 14px;
-
-  cursor: pointer;
-
-  transition: all 0.2s ease;
-
-}
-
-.dropdown-item:hover {
-
-  background: linear-gradient(
-    90deg,
-    rgba(124,77,255,0.2),
-    rgba(0,212,255,0.2)
-  );
-
-  padding-left: 20px;
+  border:2px solid rgba(255,255,255,0.2);
 
 }
 
 
-/* ===============================
-   LOGOUT BUTTON SPECIAL STYLE
-================================= */
+/* ================================= */
+/* USERNAME */
+/* ================================= */
 
-.dropdown-item.logout {
+.username{
 
-  color: #ff4d6d;
+  font-weight:500;
 
-}
+  color:#e2e8f0;
 
-.dropdown-item.logout:hover {
-
-  background: rgba(255,77,109,0.15);
+  white-space:nowrap;
 
 }
 
 
-/* ===============================
-   ANIMATION
-================================= */
+/* ================================= */
+/* DROPDOWN MENU */
+/* ================================= */
 
-@keyframes dropdownFade {
+.dropdown-menu{
 
-  from {
+  position:absolute;
 
-    opacity: 0;
+  top:50px;
 
-    transform: translateY(-10px);
+  right:0;
+
+  width:180px;
+
+  background:rgba(15,23,42,0.98);
+
+  border:1px solid rgba(255,255,255,0.08);
+
+  border-radius:12px;
+
+  box-shadow:0 12px 30px rgba(0,0,0,0.7);
+
+  display:flex;
+
+  flex-direction:column;
+
+  overflow:hidden;
+
+  z-index:1000;
+
+  animation:dropdownFade 0.2s ease;
+
+}
+
+
+/* ================================= */
+/* DROPDOWN ITEMS */
+/* ================================= */
+
+.dropdown-menu a{
+
+  padding:12px 16px;
+
+  color:#cbd5f5;
+
+  text-decoration:none;
+
+  font-size:14px;
+
+  cursor:pointer;
+
+  transition:0.2s;
+
+}
+
+
+/* LINK HOVER */
+
+.dropdown-menu a:hover{
+
+  background:rgba(99,102,241,0.25);
+
+  color:white;
+
+}
+
+
+/* ================================= */
+/* LOGOUT BUTTON */
+/* ================================= */
+
+.dropdown-menu button{
+
+  padding:12px 16px;
+
+  border:none;
+
+  background:none;
+
+  color:#4488ef;
+
+  text-align:left;
+
+  font-size:14px;
+
+  cursor:pointer;
+
+  transition:0.2s;
+
+}
+
+
+/* LOGOUT HOVER */
+
+.dropdown-menu button:hover{
+
+  background:rgba(239,68,68,0.18);
+
+}
+
+
+/* ================================= */
+/* ANIMATION */
+/* ================================= */
+
+@keyframes dropdownFade{
+
+  from{
+
+    opacity:0;
+
+    transform:translateY(-10px);
 
   }
 
-  to {
+  to{
 
-    opacity: 1;
+    opacity:1;
 
-    transform: translateY(0);
+    transform:translateY(0);
 
   }
 
 }
 
 
-/* ===============================
-   RESPONSIVE DESIGN
-================================= */
+/* ================================= */
+/* RESPONSIVE DESIGN */
+/* ================================= */
 
-@media (max-width: 768px) {
 
-  .profile-name {
+/* TABLET */
 
-    display: none;
+@media (max-width:768px){
+
+  .profile-button{
+
+    padding:6px 10px;
 
   }
 
-  .dropdown-menu {
+  .username{
 
-    width: 160px;
+    font-size:13px;
+
+  }
+
+  .dropdown-menu{
+
+    width:160px;
+
+  }
+
+}
+
+
+/* MOBILE */
+
+@media (max-width:480px){
+
+  .username{
+
+    display:none;
+
+  }
+
+  .profile-button{
+
+    padding:6px;
+
+    border-radius:50%;
+
+  }
+
+  .user-avatar{
+
+    width:32px;
+
+    height:32px;
+
+  }
+
+}
+
+
+/* SMALL MOBILE */
+
+@media (max-width:360px){
+
+  .dropdown-menu{
+
+    width:150px;
+
+    right:-10px;
 
   }
 

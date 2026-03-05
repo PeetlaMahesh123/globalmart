@@ -1,20 +1,16 @@
 // Footer.jsx
 import React from 'react';
-import '../styles/Footer.css';
-
+import "./styles/CustomerHomePage.css";
+import "./styles/Footer.css";
 export function Footer() {
   return (
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-left">
-          <h3>Global Mart</h3>
-          <p>“Everything You Love, Delivered to Your Door.”</p>
-        </div>
-        <div className="footer-links">
-          <a href="#">About Us</a>
-          <a href="#">Contact</a>
-          <a href="#">Terms of Service</a>
-          <a href="#">Privacy Policy</a>
+          <h3 className="footer-title" align="center">Global Mart</h3>
+          <p className="footer-tagline" >Global Mart – Where the World Shops from everywhere, for everyone.
+          <br />
+          Worldwide varieties with trusted & branded Quality.</p>
         </div>
       </div>
       <div className="footer-bottom">

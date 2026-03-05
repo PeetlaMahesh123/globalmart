@@ -1,189 +1,195 @@
-/* ===============================
-   MAIN FOOTER
-================================= */
+/* ================================= */
+/* FOOTER MAIN */
+/* ================================= */
 
-.footer {
+.footer{
 
-  background: linear-gradient(
-    135deg,
-    rgba(15, 23, 42, 0.98),
-    rgba(30, 41, 59, 0.98)
-  );
+  width:100%;
 
-  color: white;
+  margin-top:30px;
 
-  padding-top: 40px;
+  background:linear-gradient(135deg,#0b1324,#1e293b);
 
-  margin-top: 60px;
+  color:#e2e8f0;
 
-  border-top: 1px solid rgba(255,255,255,0.08);
+  padding:25px 20px 10px;
 
-  box-shadow: 0 -5px 25px rgba(0,0,0,0.4);
+  border-top:1px solid rgba(255,255,255,0.05);
 
-}
-
-
-/* ===============================
-   FOOTER CONTENT CONTAINER
-================================= */
-
-.footer-content {
-
-  max-width: 1400px;
-
-  margin: auto;
-
-  padding: 0 40px 30px;
-
-  display: flex;
-
-  justify-content: space-between;
-
-  align-items: center;
-
-  flex-wrap: wrap;
-
-  gap: 20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 
 }
 
 
-/* ===============================
-   LEFT SECTION
-================================= */
+/* ================================= */
+/* FOOTER CONTENT */
+/* ================================= */
 
-.footer-left h3 {
+.footer-content{
 
-  font-size: 24px;
+  width:100%;
+  max-width:1200px;
 
-  font-weight: bold;
+  display:flex;
 
-  background: linear-gradient(90deg, #7c4dff, #00d4ff);
+  justify-content:center;
+  align-items:center;
 
-  -webkit-background-clip: text;
+  text-align:center;
 
-  -webkit-text-fill-color: transparent;
-
-  margin-bottom: 8px;
-
-}
-
-.footer-left p {
-
-  color: rgba(255,255,255,0.7);
-
-  font-size: 14px;
+  padding-bottom:10px;
 
 }
 
 
-/* ===============================
-   LINKS SECTION
-================================= */
+/* ================================= */
+/* LEFT SECTION */
+/* ================================= */
 
-.footer-links {
+.footer-left{
 
-  display: flex;
-
-  gap: 25px;
-
-  flex-wrap: wrap;
-
-}
-
-.footer-links a {
-
-  color: rgba(255,255,255,0.8);
-
-  text-decoration: none;
-
-  font-size: 14px;
-
-  position: relative;
-
-  transition: 0.3s;
+  max-width:600px;
 
 }
 
 
-/* Hover glow underline animation */
+/* ================================= */
+/* TITLE */
+/* ================================= */
 
-.footer-links a::after {
+.footer-title{
 
-  content: "";
+  font-size:20px;
 
-  position: absolute;
+  font-weight:600;
 
-  width: 0%;
+  margin-bottom:8px;
 
-  height: 2px;
+  background:linear-gradient(90deg,#38bdf8,#a78bfa);
 
-  left: 0;
-
-  bottom: -4px;
-
-  background: linear-gradient(90deg, #7c4dff, #00d4ff);
-
-  transition: 0.3s;
-
-}
-
-.footer-links a:hover {
-
-  color: #00d4ff;
-
-}
-
-.footer-links a:hover::after {
-
-  width: 100%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 
 }
 
 
-/* ===============================
-   BOTTOM SECTION
-================================= */
+/* ================================= */
+/* TAGLINE */
+/* ================================= */
 
-.footer-bottom {
+.footer-tagline{
 
-  border-top: 1px solid rgba(255,255,255,0.08);
+  font-size:14px;
 
-  text-align: center;
+  line-height:1.6;
 
-  padding: 15px;
-
-  background: rgba(255,255,255,0.02);
-
-}
-
-.footer-bottom p {
-
-  font-size: 13px;
-
-  color: rgba(255,255,255,0.6);
+  color:#cbd5f5;
 
 }
 
 
-/* ===============================
-   RESPONSIVE DESIGN
-================================= */
+/* ================================= */
+/* FOOTER BOTTOM */
+/* ================================= */
 
-@media (max-width: 768px) {
+.footer-bottom{
 
-  .footer-content {
+  width:100%;
+  max-width:1200px;
 
-    flex-direction: column;
+  margin-top:12px;
 
-    text-align: center;
+  padding-top:10px;
 
+  border-top:1px solid rgba(255,255,255,0.05);
+
+  text-align:center;
+
+  font-size:13px;
+
+  color:#94a3b8;
+
+}
+
+
+/* ================================= */
+/* RESPONSIVE DESIGN */
+/* ================================= */
+
+
+/* ========================= */
+/* LAPTOP */
+/* ========================= */
+
+@media (max-width:1200px){
+
+  .footer-content{
+    padding:0 20px;
   }
 
-  .footer-links {
+}
 
-    justify-content: center;
 
+/* ========================= */
+/* TABLET */
+/* ========================= */
+
+@media (max-width:768px){
+
+  .footer{
+    padding:20px 15px 8px;
+  }
+
+  .footer-title{
+    font-size:18px;
+  }
+
+  .footer-tagline{
+    font-size:13px;
+  }
+
+}
+
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media (max-width:480px){
+
+  .footer{
+    padding:18px 12px 6px;
+  }
+
+  .footer-title{
+    font-size:16px;
+  }
+
+  .footer-tagline{
+    font-size:12px;
+  }
+
+  .footer-bottom{
+    font-size:11px;
+  }
+
+}
+
+
+/* ========================= */
+/* VERY SMALL MOBILE */
+/* ========================= */
+
+@media (max-width:360px){
+
+  .footer-title{
+    font-size:15px;
+  }
+
+  .footer-tagline{
+    font-size:11px;
   }
 
 }

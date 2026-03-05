@@ -1,0 +1,324 @@
+/* ================================= */
+/* PAGE WRAPPER */
+/* ================================= */
+
+.orders-page-wrapper{
+
+  min-height:100vh;
+
+  display:flex;
+  flex-direction:column;
+
+  background:
+  radial-gradient(circle at top,#1e293b,#020617 70%);
+
+  color:white;
+
+}
+
+
+/* ================================= */
+/* MAIN CONTENT */
+/* ================================= */
+
+.orders-main-container{
+
+  width:100%;
+  max-width:1400px;
+
+  margin:auto;
+
+  padding:40px 30px;
+
+  flex:1;
+
+}
+
+
+/* ================================= */
+/* PAGE TITLE */
+/* ================================= */
+
+.orders-title{
+
+  text-align:center;
+
+  font-size:38px;
+
+  font-weight:700;
+
+  margin-bottom:50px;
+
+  background:linear-gradient(90deg,#38bdf8,#6366f1);
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+}
+
+
+/* ================================= */
+/* ORDERS GRID */
+/* ================================= */
+
+.orders-grid{
+
+  display:grid;
+
+  grid-template-columns:
+  repeat(auto-fit,minmax(280px,1fr));
+
+  gap:25px;
+
+}
+
+
+/* ================================= */
+/* ORDER CARD */
+/* ================================= */
+
+.orders-card{
+
+  background:rgba(30,41,59,0.9);
+
+  border-radius:16px;
+
+  padding:18px;
+
+  border:1px solid rgba(255,255,255,0.05);
+
+  box-shadow:0 10px 25px rgba(0,0,0,0.6);
+
+  transition:all 0.25s ease;
+
+}
+
+
+.orders-card:hover{
+
+  transform:translateY(-5px);
+
+  box-shadow:0 15px 35px rgba(0,0,0,0.8);
+
+}
+
+
+/* ================================= */
+/* CARD HEADER */
+/* ================================= */
+
+.orders-card-header{
+
+  font-size:14px;
+
+  color:#22d3ee;
+
+  font-weight:600;
+
+  border-bottom:1px solid rgba(255,255,255,0.1);
+
+  padding-bottom:8px;
+
+  margin-bottom:12px;
+
+}
+
+
+/* ================================= */
+/* CARD BODY */
+/* ================================= */
+
+.orders-card-body{
+
+  display:flex;
+
+  gap:12px;
+
+  align-items:center;
+
+}
+
+
+/* ================================= */
+/* PRODUCT IMAGE */
+/* ================================= */
+
+.orders-product-image{
+
+  width:70px;
+
+  height:70px;
+
+  object-fit:contain;
+
+  background:#020617;
+
+  padding:6px;
+
+  border-radius:8px;
+
+}
+
+
+/* ================================= */
+/* PRODUCT DETAILS */
+/* ================================= */
+
+.orders-product-details{
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:4px;
+
+}
+
+
+/* PRODUCT NAME */
+
+.orders-product-name{
+
+  font-size:15px;
+
+  font-weight:600;
+
+  color:white;
+
+}
+
+
+/* PRODUCT INFO */
+
+.orders-product-info{
+
+  font-size:13px;
+
+  color:#cbd5f5;
+
+}
+
+
+/* TOTAL PRICE */
+
+.orders-total-price{
+
+  font-size:14px;
+
+  font-weight:600;
+
+  color:#60a5fa;
+
+}
+
+
+/* ================================= */
+/* LOADING MESSAGE */
+/* ================================= */
+
+.orders-loading{
+
+  text-align:center;
+
+  color:#94a3b8;
+
+  margin-top:30px;
+
+  font-size:16px;
+
+}
+
+
+/* ================================= */
+/* EMPTY ORDERS MESSAGE */
+/* ================================= */
+
+.orders-empty{
+
+  text-align:center;
+
+  margin-top:50px;
+
+  font-size:18px;
+
+  color:#94a3b8;
+
+}
+
+
+/* ================================= */
+/* RESPONSIVE DESIGN */
+/* ================================= */
+
+
+/* TABLET */
+
+@media (max-width:900px){
+
+  .orders-main-container{
+
+    padding:30px 20px;
+
+  }
+
+  .orders-title{
+
+    font-size:32px;
+
+  }
+
+}
+
+
+/* MOBILE */
+
+@media (max-width:600px){
+
+  .orders-title{
+
+    font-size:26px;
+
+  }
+
+  .orders-grid{
+
+    grid-template-columns:1fr;
+
+  }
+
+  .orders-card-body{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+  }
+
+  .orders-product-image{
+
+    width:80px;
+
+    height:80px;
+
+  }
+
+}
+
+
+/* SMALL MOBILE */
+
+@media (max-width:400px){
+
+  .orders-main-container{
+
+    padding:25px 15px;
+
+  }
+
+  .orders-title{
+
+    font-size:22px;
+
+  }
+
+}

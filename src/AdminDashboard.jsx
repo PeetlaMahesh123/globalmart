@@ -1,10 +1,9 @@
 // AdminDashboard.jsx
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Footer } from "../components/Footer";
-import Logo from "../components/Logo";
-import "../styles/AdminDashboard.css";
+import { Footer } from "./Footer";
+import Logo from "./Logo";
+import "./styles/AdminDashboard.css";
 import CustomModal from "./CustomModal";
 
 const AdminDashboard = () => {
@@ -70,26 +69,21 @@ const AdminDashboard = () => {
 
   // Logout
   const handleLogout = async () => {
-
-    navigate("/login"); // instant navigation (fast)
-
     try {
-
-      await fetch("http://localhost:9096/api/auth/logout", {
+      const response = await fetch("http://localhost:9096/api/auth/logout", {
         method: "POST",
-        credentials: "include"
+        credentials: "include",
       });
-
+      if (response.ok) {
+        console.log("User successfully logged out");
+        navigate("/admin");
+      } else {
+        console.error("Failed to log out");
+      }
+    } catch (error) {
+      console.error("Error during logout:", error);
     }
-    catch (error) {
-
-      console.error(error);
-
-    }
-
   };
-
-
   // Modal Submit Handler
   const handleSubmit = (data) => {
 

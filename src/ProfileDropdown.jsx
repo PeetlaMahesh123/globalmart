@@ -1,52 +1,52 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-import useravatar from "../assets/useravatar.png";
-import "../styles/ProfileDropdown.css";
+import useravatar from "./useravatar.png";
+import "./styles/ProfileDropdown.css";
 
 export function ProfileDropdown({ username }) {
 
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
+  /* ================= TOGGLE DROPDOWN ================= */
+
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleProfile = () => {
+  /* ================= NAVIGATE TO PROFILE ================= */
+
+  const handleProfileClick = () => {
+    navigate("/customerhome");
     setIsOpen(false);
-    navigate("/home");
   };
 
-  const handleOrders = () => {
-    setIsOpen(false);
+  /* ================= NAVIGATE TO ORDERS ================= */
+
+  const handleOrdersClick = () => {
     navigate("/orders");
+    setIsOpen(false);
   };
 
-  // ✅ CORRECT LOGOUT FUNCTION
-  const handleLogout = async () => {
+  /* ================= LOGOUT ================= */
 
-    setIsOpen(false);
+  const handleLogout = async () => {
 
     try {
 
-      const response = await fetch("http://localhost:9096/api/auth/logout", {
-        method: "POST",
-        credentials: "include", // important for session cookies
-      });
+      const response = await fetch(
+        "http://localhost:9096/api/auth/logout",
+        {
+          method: "POST",
+          credentials: "include",
+        }
+      );
 
       if (response.ok) {
 
-        // ✅ clear local storage
-        localStorage.removeItem("username");
-        localStorage.removeItem("token");
+        console.log("User logged out");
 
-        // optional: clear all storage
-        // localStorage.clear();
-
-        console.log("Logout successful");
-
-        navigate("/login");
+        navigate("/");
 
       } else {
 
@@ -63,22 +63,33 @@ export function ProfileDropdown({ username }) {
   };
 
   return (
+
     <div className="profile-dropdown">
 
-      <button className="profile-btn" onClick={toggleDropdown}>
+      {/* PROFILE BUTTON */}
+
+      <button
+        className="profile-button"
+        onClick={toggleDropdown}
+      >
 
         <img
           src={useravatar}
           alt="User Avatar"
-          className="profile-avatar"
-          onError={(e) => e.target.src = "/fallback-avatar.png"}
+          className="user-avatar"
+          onError={(e) => {
+            e.target.src = "fallback-logo.png";
+          }}
         />
 
-        <span className="profile-name">
+        <span className="username">
           {username || "Guest"}
         </span>
 
       </button>
+
+
+      {/* DROPDOWN MENU */}
 
       {isOpen && (
 
@@ -86,20 +97,20 @@ export function ProfileDropdown({ username }) {
 
           <button
             className="dropdown-item"
-            onClick={handleProfile}
+            onClick={handleProfileClick}
           >
             Profile
           </button>
 
           <button
             className="dropdown-item"
-            onClick={handleOrders}
+            onClick={handleOrdersClick}
           >
             Orders
           </button>
 
           <button
-            className="dropdown-item logout"
+            className="dropdown-logout"
             onClick={handleLogout}
           >
             Logout
@@ -110,5 +121,7 @@ export function ProfileDropdown({ username }) {
       )}
 
     </div>
+
   );
+
 }

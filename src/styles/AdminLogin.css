@@ -1,0 +1,362 @@
+/* ================================= */
+/* GLOBAL RESET */
+/* ================================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Poppins",sans-serif;
+}
+
+
+/* ================================= */
+/* PAGE BACKGROUND */
+/* ================================= */
+
+body{
+
+  min-height:100vh;
+
+  background:
+  linear-gradient(
+    rgba(15,23,42,0.85),
+    rgba(2,6,23,0.9)
+  ),
+  url("https://images.unsplash.com/photo-1551288049-bebda4e38f71");
+
+  background-size:cover;
+
+  background-position:center;
+
+  background-repeat:no-repeat;
+
+}
+
+
+/* ================================= */
+/* PAGE LAYOUT */
+/* ================================= */
+
+.page-layout{
+
+  width:100%;
+
+  min-height:100vh;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  padding:40px;
+
+}
+
+
+/* ================================= */
+/* CONTAINER */
+/* ================================= */
+
+.page-container1{
+
+  width:100%;
+
+  max-width:450px;
+
+}
+
+
+/* ================================= */
+/* LOGIN CARD */
+/* ================================= */
+
+.form-container{
+
+  width:100%;
+
+  padding:40px 35px;
+
+  border-radius:20px;
+
+  background:rgba(255,255,255,0.08);
+
+  backdrop-filter:blur(15px);
+
+  border:1px solid rgba(255,255,255,0.15);
+
+  box-shadow:0 25px 60px rgba(0,0,0,0.6);
+
+  animation:fadeIn 0.6s ease;
+
+}
+
+
+/* ================================= */
+/* TITLE */
+/* ================================= */
+
+.form-title{
+
+  font-size:34px;
+
+  font-weight:700;
+
+  text-align:center;
+
+  margin-bottom:30px;
+
+  background:linear-gradient(90deg,#38bdf8,#6366f1);
+
+  -webkit-background-clip:text;
+
+  -webkit-text-fill-color:transparent;
+
+}
+
+
+/* ================================= */
+/* FORM */
+/* ================================= */
+
+.form-content{
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:18px;
+
+}
+
+
+/* ================================= */
+/* FORM GROUP */
+/* ================================= */
+
+.form-group{
+
+  display:flex;
+
+  flex-direction:column;
+
+}
+
+
+/* LABEL */
+
+.form-label{
+
+  font-size:14px;
+
+  color:#e2e8f0;
+
+  margin-bottom:6px;
+
+}
+
+
+/* ================================= */
+/* INPUT FIELD */
+/* ================================= */
+
+.form-input{
+
+  padding:14px;
+
+  border-radius:10px;
+
+  border:none;
+
+  outline:none;
+
+  font-size:14px;
+
+  background:rgba(255,255,255,0.9);
+
+  transition:0.25s;
+
+}
+
+
+.form-input:focus{
+
+  transform:scale(1.02);
+
+  box-shadow:0 0 10px #38bdf8;
+
+}
+
+
+/* ================================= */
+/* BUTTON */
+/* ================================= */
+
+.form-button{
+
+  margin-top:10px;
+
+  padding:14px;
+
+  border:none;
+
+  border-radius:12px;
+
+  font-size:16px;
+
+  font-weight:600;
+
+  color:white;
+
+  cursor:pointer;
+
+  background:linear-gradient(135deg,#06b6d4,#3b82f6);
+
+  transition:0.3s;
+
+}
+
+
+.form-button:hover{
+
+  transform:translateY(-2px);
+
+  box-shadow:0 8px 20px rgba(59,130,246,0.6);
+
+}
+
+
+/* ================================= */
+/* ERROR MESSAGE */
+/* ================================= */
+
+.error-message{
+
+  text-align:center;
+
+  color:#f87171;
+
+  font-size:14px;
+
+  margin-bottom:10px;
+
+}
+
+
+/* ================================= */
+/* FOOTER */
+/* ================================= */
+
+.form-footer{
+
+  text-align:center;
+
+  margin-top:20px;
+
+}
+
+
+.form-link{
+
+  text-decoration:none;
+
+  color:#22d3ee;
+
+  font-size:14px;
+
+}
+
+
+.form-link:hover{
+
+  text-decoration:underline;
+
+}
+
+
+/* ================================= */
+/* ANIMATION */
+/* ================================= */
+
+@keyframes fadeIn{
+
+  from{
+
+    opacity:0;
+
+    transform:translateY(20px);
+
+  }
+
+  to{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+  }
+
+}
+
+
+/* ================================= */
+/* RESPONSIVE DESIGN */
+/* ================================= */
+
+
+/* TABLET */
+
+@media (max-width:900px){
+
+  .page-layout{
+
+    justify-content:center;
+
+  }
+
+}
+
+
+/* MOBILE */
+
+@media (max-width:600px){
+
+  .form-container{
+
+    padding:35px 25px;
+
+  }
+
+  .form-title{
+
+    font-size:28px;
+
+  }
+
+}
+
+
+/* SMALL MOBILE */
+
+@media (max-width:400px){
+
+  .page-layout{
+
+    padding:20px;
+
+  }
+
+  .form-title{
+
+    font-size:24px;
+
+  }
+
+  .form-input{
+
+    font-size:13px;
+
+  }
+
+}
