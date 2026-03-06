@@ -21,7 +21,7 @@ const CartPage = () => {
       try {
 
         const response = await fetch(
-          "http://localhost:9096/api/cart/items",
+          "https://globalmart-backend-rktj.onrender.com/api/cart/items",
           { credentials: "include" }
         );
 
@@ -67,7 +67,7 @@ const CartPage = () => {
   const handleRemoveItem = async (productId) => {
 
     await fetch(
-      "http://localhost:9096/api/cart/delete",
+      "https://globalmart-backend-rktj.onrender.com/api/cart/delete",
       {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
@@ -92,7 +92,7 @@ const CartPage = () => {
     }
 
     await fetch(
-      "http://localhost:9096/api/cart/update",
+      "https://globalmart-backend-rktj.onrender.com/api/cart/update",
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -131,7 +131,7 @@ const CartPage = () => {
       };
 
       const response = await fetch(
-        "http://localhost:9096/api/payment/create",
+        "https://globalmart-backend-rktj.onrender.com/api/payment/create",
         {
           method: "POST",
           headers: {
@@ -167,7 +167,7 @@ const CartPage = () => {
           try {
 
             const verifyResponse = await fetch(
-              "http://localhost:9096/api/payment/verify",
+              "https://globalmart-backend-rktj.onrender.com/api/payment/verify",
               {
                 method: "POST",
                 headers: {

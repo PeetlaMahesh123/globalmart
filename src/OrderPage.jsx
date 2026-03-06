@@ -18,7 +18,7 @@ export default function OrdersPage() {
     try {
 
       const response = await fetch(
-        "http://localhost:9096/api/orders",
+        "https://globalmart-backend-rktj.onrender.com/api/orders",
         { credentials: "include" }
       );
 

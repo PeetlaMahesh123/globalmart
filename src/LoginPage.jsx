@@ -1,123 +1,141 @@
-import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { CategoryNavigation } from "./CategoryNavigation";
+import { ProductList } from "./ProductList";
+import { Footer } from "./Footer";
+import { Header } from "./Header";
+import { useNavigate } from "react-router-dom";
+import "./styles/CustomerHomePage.css";
 
-export default function LoginPage() {
+export default function CustomerHomePage() {
+
+  const [products, setProducts] = useState([]);
+  const [cartCount, setCartCount] = useState(0);
+  const [username, setUsername] = useState("");
+  const [loading, setLoading] = useState(true);
+
   const navigate = useNavigate();
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  // ================= LOAD DATA =================
+  useEffect(() => {
+    fetchProducts("Shirts");
+  }, []);
 
-  const handleSignIn = async (e) => {
-    e.preventDefault();
-    e.stopPropagation(); // Prevent double submission
-
-    if (!username.trim() || !password.trim()) {
-      setError("Username and password are required");
-      return;
-    }
-
+  // ================= FETCH PRODUCTS =================
+  const fetchProducts = async (category = "Shirts") => {
     try {
-      setLoading(true);
-      setError("");
+
+      const token = localStorage.getItem("token");
 
       const response = await fetch(
-        "http://localhost:9096/api/auth/login",
+        `https://globalmart-backend-rktj.onrender.com/api/products?category=${category}`,
         {
-          method: "POST",
           headers: {
-            "Content-Type": "application/json",
-          },
-          credentials: "include", // IMPORTANT for cookies
-          body: JSON.stringify({
-            username: username.trim(),
-            password: password.trim(),
-          }),
+            Authorization: `Bearer ${token}`
+          }
         }
       );
 
-      const data = await response.json();
-      console.log("Login Response:", data);
-
-      if (!response.ok) {
-        setError(data.error || "Invalid username or password");
+      if (response.status === 401) {
+        navigate("/");
         return;
       }
 
-      // Save user info locally (optional)
-      localStorage.setItem("username", data.username);
-      localStorage.setItem("role", data.role);
+      const data = await response.json();
 
-      const role = data.role?.toUpperCase();
+      setProducts(data.products || []);
+      setUsername(data.username || "");
 
-      if (role === "CUSTOMER") {
-        console.log("Navigating to /customerhome");
-        navigate("/customerhome", { replace: true });
-      } else if (role === "ADMIN") {
-        console.log("Navigating to /adminhome");
-        navigate("/adminhome", { replace: true });
-      } else {
-        setError("Invalid role received from server");
+      if (data.username) {
+        fetchCartCount(data.username);
       }
 
-    } catch (err) {
-      console.error("Login Error:", err);
-      setError("Server error. Please try again.");
+    } catch (error) {
+      console.error("Error fetching products:", error);
     } finally {
       setLoading(false);
     }
   };
 
+  // ================= FETCH CART COUNT =================
+  const fetchCartCount = async (user) => {
+    try {
+
+      const token = localStorage.getItem("token");
+
+      const response = await fetch(
+        `https://globalmart-backend-rktj.onrender.com/api/cart/items/count?username=${user}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+
+      if (!response.ok) return;
+
+      const count = await response.json();
+      setCartCount(count);
+
+    } catch (error) {
+      console.error("Cart error:", error);
+    }
+  };
+
+  // ================= ADD TO CART =================
+  const handleAddToCart = async (productId) => {
+    try {
+
+      const token = localStorage.getItem("token");
+
+      const response = await fetch(
+        "https://globalmart-backend-rktj.onrender.com/api/cart/add",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            username,
+            productId
+          })
+        }
+      );
+
+      if (response.ok) {
+        fetchCartCount(username);
+      }
+
+    } catch (error) {
+      console.error("Add to cart error:", error);
+    }
+  };
+
   return (
-    <div className="page-layout">
-      <div className="page-container">
-        <div className="form-container">
+    <div className="customer-homepage">
 
-          <h1 className="form-title">Login</h1>
+      <Header
+        cartCount={cartCount}
+        username={username}
+      />
 
-          {error && <p className="error-message">{error}</p>}
+      <nav className="navigation">
+        <CategoryNavigation onCategoryClick={fetchProducts} />
+      </nav>
 
-          <form onSubmit={handleSignIn} className="form-content">
+      <main className="main-content">
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <ProductList
+            products={products}
+            onAddToCart={handleAddToCart}
+          />
+        )}
+      </main>
 
-            <div className="form-group">
-              <input
-                type="text"
-                placeholder="Username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                className="form-input"
-                required
-              />
-            </div>
+      <Footer />
 
-            <div className="form-group">
-              <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="form-input"
-                required
-              />
-            </div>
-
-            <button
-              type="submit"
-              disabled={loading}
-              className="form-button"
-            >
-              {loading ? "Signing In..." : "Sign In"}
-            </button>
-
-          </form>
-
-          <div className="form-footer">
-            <Link to="/register">New User? Sign up here</Link>
-          </div>
-
-        </div>
-      </div>
     </div>
   );
 }

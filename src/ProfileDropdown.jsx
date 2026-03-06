@@ -35,7 +35,7 @@ export function ProfileDropdown({ username }) {
     try {
 
       const response = await fetch(
-        "http://localhost:9096/api/auth/logout",
+        "https://globalmart-backend-rktj.onrender.com/api/auth/logout",
         {
           method: "POST",
           credentials: "include",

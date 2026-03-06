@@ -15,18 +15,18 @@ export default function CustomerHomePage() {
 
   const navigate = useNavigate();
 
-  // ================= LOAD DATA =================
   useEffect(() => {
     fetchProducts("Shirts");
   }, []);
 
-  // ================= FETCH PRODUCTS =================
   const fetchProducts = async (category = "Shirts") => {
+
     try {
+
       const response = await fetch(
-        `http://localhost:9096/api/products?category=${category}`,
+        `https://globalmart-backend-rktj.onrender.com/api/products?category=${category}`,
         {
-          credentials: "include", // ✅ IMPORTANT
+          credentials: "include"   // ✅ send cookie
         }
       );
 
@@ -45,47 +45,56 @@ export default function CustomerHomePage() {
       }
 
     } catch (error) {
+
       console.error("Error fetching products:", error);
+
     } finally {
+
       setLoading(false);
+
     }
   };
 
-  // ================= FETCH CART COUNT =================
   const fetchCartCount = async (user) => {
+
     try {
+
       const response = await fetch(
-        `http://localhost:9096/api/cart/items/count?username=${user}`,
+        `https://globalmart-backend-rktj.onrender.com/api/cart/items/count?username=${user}`,
         {
-          credentials: "include", // ✅ IMPORTANT
+          credentials: "include"
         }
       );
 
       if (!response.ok) return;
 
       const count = await response.json();
+
       setCartCount(count);
 
     } catch (error) {
+
       console.error("Cart error:", error);
+
     }
   };
 
-  // ================= ADD TO CART =================
   const handleAddToCart = async (productId) => {
+
     try {
+
       const response = await fetch(
-        "http://localhost:9096/api/cart/add",
+        "https://globalmart-backend-rktj.onrender.com/api/cart/add",
         {
           method: "POST",
-          credentials: "include", // ✅ IMPORTANT
+          credentials: "include",
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/json"
           },
           body: JSON.stringify({
             username,
-            productId,
-          }),
+            productId
+          })
         }
       );
 
@@ -94,11 +103,14 @@ export default function CustomerHomePage() {
       }
 
     } catch (error) {
+
       console.error("Add to cart error:", error);
+
     }
   };
 
   return (
+
     <div className="customer-homepage">
 
       <Header
@@ -111,6 +123,7 @@ export default function CustomerHomePage() {
       </nav>
 
       <main className="main-content">
+
         {loading ? (
           <p>Loading...</p>
         ) : (
@@ -119,9 +132,11 @@ export default function CustomerHomePage() {
             onAddToCart={handleAddToCart}
           />
         )}
+
       </main>
 
       <Footer />
+
     </div>
   );
 }

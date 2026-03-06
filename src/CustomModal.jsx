@@ -573,7 +573,7 @@ const ModifyUserFormComponent = ({ onClose }) => {
       const role = formData.get("role");
 
       const response = await fetch(
-        "http://localhost:9096/admin/user/modify",
+        "https://globalmart-backend-rktj.onrender.com/admin/user/modify",
         {
           method: "PUT",
           credentials: "include",

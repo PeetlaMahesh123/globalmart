@@ -70,7 +70,7 @@ const AdminDashboard = () => {
   // Logout
   const handleLogout = async () => {
     try {
-      const response = await fetch("http://localhost:9096/api/auth/logout", {
+      const response = await fetch("https://globalmart-backend-rktj.onrender.com/api/auth/logout", {
         method: "POST",
         credentials: "include",
       });
@@ -136,7 +136,7 @@ const AdminDashboard = () => {
   const handleAddProductSubmit = async (productData) => {
 
     const res = await fetch(
-      "http://localhost:9096/admin/products/add",
+      "https://globalmart-backend-rktj.onrender.com/admin/products/add",
       {
         method: "POST",
         credentials: "include",
@@ -155,7 +155,7 @@ const AdminDashboard = () => {
   const handleDeleteProductSubmit = async ({ productId }) => {
 
     await fetch(
-      "http://localhost:9096/admin/products/delete",
+      "https://globalmart-backend-rktj.onrender.com/admin/products/delete",
       {
         method: "DELETE",
         credentials: "include",
@@ -172,7 +172,7 @@ const AdminDashboard = () => {
   const handleViewUserSubmit = async ({ userId }) => {
 
     const res = await fetch(
-      `http://localhost:9096/admin/user/getbyid?userId=${userId}`,
+      `https://globalmart-backend-rktj.onrender.com/admin/user/getbyid?userId=${userId}`,
       {
         method: "GET",
         credentials: "include"
@@ -191,7 +191,7 @@ const AdminDashboard = () => {
     if (!data.username) {
 
       const res = await fetch(
-        `http://localhost:9096/admin/user/getbyid?userId=${data.userId}`,
+        `https://globalmart-backend-rktj.onrender.com/admin/user/getbyid?userId=${data.userId}`,
         {
           method: "GET",
           credentials: "include"
@@ -209,7 +209,7 @@ const AdminDashboard = () => {
     else {
 
       const res = await fetch(
-        "http://localhost:9096/admin/user/modify",
+        "https://globalmart-backend-rktj.onrender.com/admin/user/modify",
         {
           method: "PUT",
           credentials: "include",
@@ -230,7 +230,7 @@ const AdminDashboard = () => {
   const handleMonthlyBusiness = async (data) => {
 
     const res = await fetch(
-      `http://localhost:9096/admin/business/monthly?month=${data.month}&year=${data.year}`,
+      `https://globalmart-backend-rktj.onrender.com/admin/business/monthly?month=${data.month}&year=${data.year}`,
       { credentials: "include" }
     );
 
@@ -244,7 +244,7 @@ const AdminDashboard = () => {
   const handleDailyBusiness = async (data) => {
 
     const res = await fetch(
-      `http://localhost:9096/admin/business/daily?date=${data.date}`,
+      `https://globalmart-backend-rktj.onrender.com/admin/business/daily?date=${data.date}`,
       { credentials: "include" }
     );
 
@@ -258,7 +258,7 @@ const AdminDashboard = () => {
   const handleYearlyBusiness = async (data) => {
 
     const res = await fetch(
-      `http://localhost:9096/admin/business/yearly?year=${data.year}`,
+      `https://globalmart-backend-rktj.onrender.com/admin/business/yearly?year=${data.year}`,
       { credentials: "include" }
     );
 
@@ -272,7 +272,7 @@ const AdminDashboard = () => {
   const handleOverallBusiness = async () => {
 
     const res = await fetch(
-      "http://localhost:9096/admin/business/overall",
+      "https://globalmart-backend-rktj.onrender.com/admin/business/overall",
       { credentials: "include" }
     );
 
