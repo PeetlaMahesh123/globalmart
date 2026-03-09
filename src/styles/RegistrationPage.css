@@ -1,254 +1,153 @@
-/* ===== GLOBAL ===== */
+/* Reset */
 
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
+  font-family: "Poppins", sans-serif;
 }
 
-body{
-  font-family:"Poppins",sans-serif;
-}
 
-/* ===== BACKGROUND ===== */
+/* Full page background */
 
 .page-container{
+
   min-height:100vh;
-  width:100%;
+  width:100%; /* FIXED */
 
   display:flex;
   justify-content:center;
   align-items:center;
 
-  padding:20px;
-
-  background:
-  linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.75)),
-url("https://images.unsplash.com/photo-1607083206869-4c7672e72a8a");
+  background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.9)),
+  url("https://images.unsplash.com/photo-1556742049-0cfed4f6a45d");
 
   background-size:cover;
   background-position:center;
+
 }
 
-/* ===== FORM CARD ===== */
+
+/* Register card */
 
 .form-container{
 
-  width:100%;
-  max-width:420px;
+  width:420px;
+  max-width:90%;
 
   padding:40px;
 
-  border-radius:20px;
+  background: rgba(20,20,25,0.95);
 
-  background:rgba(255,255,255,0.08);
-  backdrop-filter:blur(20px);
+  border-radius:16px;
 
-  border:1px solid rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
 
-  box-shadow:
-  0 20px 60px rgba(0,0,0,0.7),
-  inset 0 0 20px rgba(255,255,255,0.05);
+  box-shadow:0 0 35px rgba(0,255,255,0.25);
 
   text-align:center;
 
-  animation:fadeIn 0.6s ease-in-out;
 }
 
-/* ===== TITLE ===== */
 
-.form-title{
-  font-size:2.2rem;
-  font-weight:700;
-  color:#4facfe;
-  margin-bottom:30px;
+/* Title */
+
+.form-container h1{
+
+  font-size:32px;
+  color:#4aa3ff;
+  margin-bottom:25px;
+
 }
 
-/* ===== FORM ===== */
 
-.form-content{
-  display:flex;
-  flex-direction:column;
-  gap:20px;
-}
+/* Input fields */
 
-/* ===== GROUP ===== */
+.form-container input{
 
-.form-group{
-  display:flex;
-  flex-direction:column;
-  text-align:left;
-}
+  width:100%;
+  padding:12px;
 
-/* ===== LABEL ===== */
+  margin-bottom:18px;
 
-.form-label{
-  font-size:0.9rem;
-  color:#e0e0e0;
-  margin-bottom:6px;
-}
-
-/* ===== INPUT ===== */
-
-.form-input,
-.form-select{
-
-  padding:14px;
-
-  border-radius:10px;
   border:none;
+  border-radius:8px;
 
   outline:none;
 
-  font-size:0.95rem;
+  font-size:14px;
 
-  background:rgba(255,255,255,0.95);
+  background:#e9e9e9;
 
-  transition:all 0.3s ease;
 }
 
-/* Focus Glow */
 
-.form-input:focus,
-.form-select:focus{
-  box-shadow:0 0 12px #00eaff;
-  transform:scale(1.02);
-}
+/* Button */
 
-/* ===== BUTTON ===== */
+.form-container button{
 
-.form-button{
+  width:100%;
+  padding:13px;
 
-  margin-top:10px;
-
-  padding:14px;
-
-  border-radius:12px;
   border:none;
+  border-radius:8px;
 
-  font-size:1rem;
-  font-weight:600;
+  font-size:16px;
+  font-weight:500;
 
   color:white;
 
   cursor:pointer;
 
-  background:linear-gradient(135deg,#00c6ff,#0072ff);
+  background: linear-gradient(90deg,#1fd1f9,#1a7cff);
 
-  transition:all 0.3s ease;
+  transition:0.3s;
+
 }
 
-.form-button:hover{
-  transform:translateY(-3px);
-  box-shadow:0 10px 30px rgba(0,114,255,0.6);
+
+/* Button hover */
+
+.form-container button:hover{
+
+  transform:scale(1.05);
+  box-shadow:0 0 15px #1fd1f9;
+
 }
 
-/* ===== FOOTER ===== */
 
-.form-footer{
-  margin-top:25px;
-  font-size:0.9rem;
-  color:#cccccc;
-}
-
-.form-link{
-  color:#00f5ff;
-  font-weight:500;
-  text-decoration:none;
-}
-
-.form-link:hover{
-  text-decoration:underline;
-}
-
-/* ===== ERROR ===== */
+/* Error message */
 
 .error-message{
+
   color:#ff4d4d;
-  font-size:0.9rem;
-  margin-bottom:10px;
-}
-
-/* ===== ANIMATION ===== */
-
-@keyframes fadeIn{
-
-  from{
-    opacity:0;
-    transform:translateY(30px);
-  }
-
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
+  margin-bottom:12px;
 
 }
 
-/* ================================= */
-/* 📱 MOBILE */
-/* ================================= */
 
-@media (max-width:480px){
+/* Bottom text */
 
-  .form-container{
-    padding:25px;
-  }
+.form-container p{
 
-  .form-title{
-    font-size:1.6rem;
-  }
-
-  .form-input,
-  .form-select{
-    padding:12px;
-    font-size:0.9rem;
-  }
-
-  .form-button{
-    padding:12px;
-    font-size:0.95rem;
-  }
+  margin-top:18px;
+  color:#ccc;
+  font-size:14px;
 
 }
 
-/* ================================= */
-/* 📲 TABLETS */
-/* ================================= */
 
-@media (min-width:481px) and (max-width:768px){
+.form-container a{
 
-  .form-container{
-    max-width:90%;
-    padding:30px;
-  }
-
-  .form-title{
-    font-size:1.9rem;
-  }
+  color:#1fd1f9;
+  text-decoration:none;
+  font-weight:500;
 
 }
 
-/* ================================= */
-/* 💻 LAPTOP */
-/* ================================= */
 
-@media (min-width:769px) and (max-width:1200px){
+.form-container a:hover{
 
-  .form-container{
-    max-width:420px;
-  }
-
-}
-
-/* ================================= */
-/* 🖥️ LARGE DESKTOP */
-/* ================================= */
-
-@media (min-width:1201px){
-
-  .form-container{
-    max-width:450px;
-  }
+  text-decoration:underline;
 
 }

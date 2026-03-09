@@ -22,18 +22,21 @@ export default function RegistrationPage() {
         {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/json"
           },
           body: JSON.stringify({
             username,
             email,
             password,
-            role: "CUSTOMER" // role automatically assigned
-          }),
+            role: "CUSTOMER"
+          })
         }
       );
 
-      const data = await response.json();
+      let data = {};
+try {
+  data = await response.json();
+} catch {}
 
       if (!response.ok) {
         setError(data.error || "Registration failed");
@@ -41,8 +44,7 @@ export default function RegistrationPage() {
       }
 
       alert("Registration successful! Please login.");
-
-      navigate("/"); // redirect to login page
+      navigate("/");
 
     } catch (err) {
       console.error("Registration error:", err);
@@ -52,7 +54,6 @@ export default function RegistrationPage() {
 
   return (
     <div className="page-container">
-
       <div className="form-container">
 
         <h1 className="form-title">Register</h1>
@@ -111,7 +112,6 @@ export default function RegistrationPage() {
         </p>
 
       </div>
-
     </div>
   );
 }

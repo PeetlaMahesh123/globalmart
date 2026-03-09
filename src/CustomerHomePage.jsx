@@ -15,9 +15,13 @@ export default function CustomerHomePage() {
 
   const navigate = useNavigate();
 
+  // ================= PAGE LOAD =================
+
   useEffect(() => {
     fetchProducts("Shirts");
   }, []);
+
+  // ================= FETCH PRODUCTS =================
 
   const fetchProducts = async (category = "Shirts") => {
 
@@ -26,12 +30,21 @@ export default function CustomerHomePage() {
       const response = await fetch(
         `https://globalmart-backend-rktj.onrender.com/api/products?category=${category}`,
         {
-          credentials: "include"   // ✅ send cookie
+          method: "GET",
+          credentials: "include"
         }
       );
 
+      console.log("Products API status:", response.status);
+
+      // Redirect ONLY if unauthorized
       if (response.status === 401) {
         navigate("/");
+        return;
+      }
+
+      if (!response.ok) {
+        console.error("Products API error:", response.status);
         return;
       }
 
@@ -45,15 +58,13 @@ export default function CustomerHomePage() {
       }
 
     } catch (error) {
-
       console.error("Error fetching products:", error);
-
     } finally {
-
       setLoading(false);
-
     }
   };
+
+  // ================= FETCH CART COUNT =================
 
   const fetchCartCount = async (user) => {
 
@@ -62,22 +73,26 @@ export default function CustomerHomePage() {
       const response = await fetch(
         `https://globalmart-backend-rktj.onrender.com/api/cart/items/count?username=${user}`,
         {
+          method: "GET",
           credentials: "include"
         }
       );
 
-      if (!response.ok) return;
+      if (!response.ok) {
+        console.error("Cart count API error:", response.status);
+        return;
+      }
 
       const count = await response.json();
 
       setCartCount(count);
 
     } catch (error) {
-
-      console.error("Cart error:", error);
-
+      console.error("Cart count error:", error);
     }
   };
+
+  // ================= ADD TO CART =================
 
   const handleAddToCart = async (productId) => {
 
@@ -100,14 +115,16 @@ export default function CustomerHomePage() {
 
       if (response.ok) {
         fetchCartCount(username);
+      } else {
+        console.error("Add to cart failed:", response.status);
       }
 
     } catch (error) {
-
       console.error("Add to cart error:", error);
-
     }
   };
+
+  // ================= UI =================
 
   return (
 
@@ -138,5 +155,6 @@ export default function CustomerHomePage() {
       <Footer />
 
     </div>
+
   );
 }
