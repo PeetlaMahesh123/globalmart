@@ -7,12 +7,9 @@ import "./styles/Header.css";
 export function Header({ cartCount, username }) {
   return (
     <header className="header">
-      <div className="header-container">
-        <div className="header-left">
-          <Logo />
-        </div>
-
-        <div className="header-right">
+      <div className="header-content">
+        <Logo />
+        <div className="header-actions">
           <CartIcon count={cartCount} />
           <ProfileDropdown username={username} />
         </div>

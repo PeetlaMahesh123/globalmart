@@ -1,4 +1,3 @@
-// CustomModal.jsx
 import React, { useEffect, useState } from "react";
 import "./styles/CustomModal.css";
 
@@ -494,265 +493,160 @@ const CustomModal = ({ modalType, onClose, onSubmit, response }) => {
 export default CustomModal;
 
 const ModifyUserFormComponent = ({ onClose }) => {
-
-  const [userId, setUserId] = useState("");
+  const [userId, setUserId] = useState(null);
   const [userDetails, setUserDetails] = useState(null);
   const [updated, setUpdated] = useState(false);
 
-  // ✅ FETCH USER DETAILS (FIXED)
   const handleFetchUser = async (e) => {
-
     e.preventDefault();
-
     try {
-
       const formData = new FormData(e.target);
       const userid = formData.get("user-id");
 
-      if (!userid) {
-        alert("Please enter User ID");
-        return;
-      }
+      if (!userid) return;
 
-      // ✅ FIX 1: use backticks `` instead of ""
-      // ✅ FIX 2: remove body from GET request
-      const response = await fetch(
-        `http://localhost:9096/admin/user/getbyid?userId=${userid}`,
-        {
-          method: "GET",
-          credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-          }
-        }
-      );
+      const response = await fetch("https://globalmart-backend-rktj.onrender.com/admin/user/getbyid", {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userId: userid }), // Ensure userId is correctly passed
+      });
 
       if (response.ok) {
-
         const user = await response.json();
-
-        console.log("Fetched userDetails ==>", user);
+        console.log("userDetails2==>", user);
 
         setUserDetails(user);
         setUserId(userid);
-
-      } else {
-
-        console.log("User not found");
-        alert("User not found");
-
       }
-
     } catch (error) {
-
       console.log("Error fetching user details", error);
-
     }
-
   };
-
 
   useEffect(() => {
-
-    console.log("userDetails updated ==>", userDetails);
-
+    console.log("userDetails==>", userDetails);
   }, [userDetails]);
 
-
-  // ✅ UPDATE USER DETAILS
   const handleUpdateUser = async (e) => {
-
     e.preventDefault();
+    const formData = new FormData(e.target);
 
-    try {
+    const username = formData.get("username");
+    const email = formData.get("email");
+    const role = formData.get("role");
 
-      const formData = new FormData(e.target);
+    const response = await fetch("https://globalmart-backend-rktj.onrender.com/admin/user/modify", {
+      method: "PUT",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userId: +userId,
+        username: username,
+        email: email,
+        role: role,
+      }),
+    });
 
-      const username = formData.get("username");
-      const email = formData.get("email");
-      const role = formData.get("role");
+    if (response.ok) {
+      const user = await response.json();
+      console.log("userDetails2==>", user);
 
-      const response = await fetch(
-        "https://globalmart-backend-rktj.onrender.com/admin/user/modify",
-        {
-          method: "PUT",
-          credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            userId: Number(userId),
-            username: username,
-            email: email,
-            role: role,
-          }),
-        }
-      );
-
-      if (response.ok) {
-
-        const updatedUser = await response.json();
-
-        console.log("Updated user ==>", updatedUser);
-
-        setUpdated(true);
-        setUserDetails(updatedUser);
-
-      } else {
-
-        alert("Failed to update user");
-
-      }
-
-    } catch (error) {
-
-      console.log("Error updating user", error);
-
+      setUpdated(true);
+      setUserDetails(user);
     }
-
   };
 
-
-  // ✅ STEP 1: FETCH USER FORM
   if (!userDetails) {
-
     return (
-
       <form onSubmit={handleFetchUser}>
-
         <div className="modal-form-item">
-
-          <label htmlFor="user-id">User ID:</label>
-
+          <label for="user-id">User ID:</label>
           <input
             type="text"
             id="user-id"
             name="user-id"
             value={userId}
-            onChange={(e) => setUserId(e.target.value)}
+            onChange={(e) => userId(e.target.value)}
           />
-
         </div>
-
         <button type="submit">Get User</button>
-
       </form>
-
     );
-
   }
 
-
-  // ✅ STEP 2: UPDATE USER FORM
   if (userDetails && !updated) {
-
     return (
-
       <div>
-
         <form onSubmit={handleUpdateUser} className="modal-form">
-
           <div className="modal-form-item">
-
-            <label htmlFor="user-id">User ID:</label>
-
+            <label for="user-id">User ID:</label>
             <input
               type="text"
-              value={userId}
-              readOnly
+              id="user-id"
+              name="user-id"
+              value="17"
+              readonly
             />
-
           </div>
-
-
           <div className="modal-form-item">
-
-            <label htmlFor="username">Username:</label>
-
+            <label for="username">Username:</label>
             <input
               type="text"
+              id="username"
               name="username"
-              defaultValue={userDetails.username}
+              defaultValue={userDetails?.username}
             />
-
           </div>
 
-
           <div className="modal-form-item">
-
-            <label htmlFor="email">Email:</label>
-
+            <label for="email">Email:</label>
             <input
               type="email"
+              id="email"
               name="email"
-              defaultValue={userDetails.email}
+              defaultValue={userDetails?.email}
             />
-
           </div>
-
-
           <div className="modal-form-item">
-
-            <label htmlFor="role">Role:</label>
-
+            <label for="role">Role:</label>
             <input
               type="text"
+              id="role"
               name="role"
               defaultValue={userDetails.role}
             />
-
           </div>
-
-
-          <button type="submit">Update User</button>
-
+          <button type="submit">Submit</button>
         </form>
-
       </div>
-
     );
-
   }
-
-
-  // ✅ STEP 3: SHOW UPDATED USER
   if (updated) {
-
     return (
-
       <div>
-
         <h2>Updated User Details</h2>
-
         <div className="user-details">
-
           <p>
             <strong>User ID:</strong> {userDetails.userId}
           </p>
-
           <p>
             <strong>Username:</strong> {userDetails.username}
           </p>
-
           <p>
             <strong>Email:</strong> {userDetails.email}
           </p>
-
           <p>
             <strong>Role:</strong> {userDetails.role}
           </p>
-
         </div>
-
         <button onClick={onClose}>Close</button>
-
       </div>
-
     );
-
   }
-
-
-  return null;
-
+  return <></>;
 };

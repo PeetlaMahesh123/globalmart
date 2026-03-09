@@ -7,14 +7,12 @@ export function Footer() {
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-left">
-          <h3 className="footer-title" align="center">Global Mart</h3>
-          <p className="footer-tagline" >Global Mart – Where the World Shops from everywhere, for everyone.
-          <br />
-          Worldwide varieties with trusted & branded Quality.</p>
+          <h3 className="footer-title">GlobalMart</h3>
+          <p className="footer-tagline">Your one-stop shop for all your needs</p>
         </div>
       </div>
       <div className="footer-bottom">
-        <p>© 2026 Global Mart. All rights reserved.</p>
+        <p>© 2026 GlobalMart. All rights reserved.</p>
       </div>
     </footer>
   );

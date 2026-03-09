@@ -4,114 +4,82 @@ import "./styles/LoginPage.css";
 
 export default function LoginPage() {
 
+  const [username,setUsername] = useState("");
+  const [password,setPassword] = useState("");
+  const [error,setError] = useState("");
+
   const navigate = useNavigate();
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-
-  const handleLogin = async (e) => {
-
+  const handleSignIn = async(e)=>{
     e.preventDefault();
-    setError("");
 
-    try {
+    try{
 
       const response = await fetch(
         "https://globalmart-backend-rktj.onrender.com/api/auth/login",
         {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
+          method:"POST",
+          headers:{
+            "Content-Type":"application/json"
           },
-          credentials: "include",
-          body: JSON.stringify({
+          credentials:"include",
+          body:JSON.stringify({
             username,
             password
           })
         }
       );
 
-      let data = {};
+      const data = await response.json();
 
-      try {
-        data = await response.json();
-      } catch {
-        data = {};
+      if(!response.ok){
+        throw new Error(data.error || "Login failed");
       }
 
-      if (!response.ok) {
-        setError(data.error || "Invalid username or password");
-        return;
+      if(data.role === "ADMIN"){
+        navigate("/adminhome");
+      }else{
+        navigate("/customerhome");
       }
 
-      localStorage.setItem("role", data.role);
-      localStorage.setItem("username", data.username);
-
-      if (data.role === "ADMIN") {
-  navigate("/adminhome", { replace: true });
-} else if (data.role === "CUSTOMER") {
-  navigate("/customerhome", { replace: true });
-}
-
-    } catch (error) {
-      console.error(error);
-      setError("Server error");
+    }catch(err){
+      setError(err.message);
     }
-  };
+  }
 
   return (
+    <div className="page-layout">
+      <div className="page-container">
+        <div className="form-container">
 
-    <div className="page-container">
+          <h1>Login</h1>
 
-      <div className="form-container">
+          {error && <p className="error-message">{error}</p>}
 
-        <h1 className="form-title">Login</h1>
-
-        {error && <p className="error-message">{error}</p>}
-
-        <form onSubmit={handleLogin} className="form-content">
-
-          <div className="form-group">
-
-            <label>Username</label>
+          <form onSubmit={handleSignIn}>
 
             <input
               type="text"
-              placeholder="Enter username"
+              placeholder="Username"
               value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={(e)=>setUsername(e.target.value)}
               required
             />
-
-          </div>
-
-          <div className="form-group">
-
-            <label>Password</label>
 
             <input
               type="password"
-              placeholder="Enter password"
+              placeholder="Password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e)=>setPassword(e.target.value)}
               required
             />
 
-          </div>
+            <button type="submit">Sign In</button>
 
-          <button type="submit" className="form-button">
-            Login
-          </button>
+          </form>
 
-        </form>
-
-        <p className="form-footer">
-          New user? <a href="/register">Register here</a>
-        </p>
-
+        </div>
       </div>
-
     </div>
   );
 }

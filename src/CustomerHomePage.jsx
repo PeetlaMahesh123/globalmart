@@ -3,26 +3,56 @@ import { CategoryNavigation } from "./CategoryNavigation";
 import { ProductList } from "./ProductList";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
-import { useNavigate } from "react-router-dom";
 import "./styles/CustomerHomePage.css";
 
 export default function CustomerHomePage() {
 
   const [products, setProducts] = useState([]);
+  const [username, setUsername] = useState("Guest");
   const [cartCount, setCartCount] = useState(0);
-  const [username, setUsername] = useState("");
-  const [loading, setLoading] = useState(true);
-
-  const navigate = useNavigate();
-
-  // ================= PAGE LOAD =================
 
   useEffect(() => {
-    fetchProducts("Shirts");
+    initializePage();
   }, []);
 
-  // ================= FETCH PRODUCTS =================
+  // Initialize page by fetching user and products
+  const initializePage = async () => {
+    await fetchUser();
+    fetchProducts("Shirts");
+  };
 
+  // Fetch logged in user
+const fetchUser = async () => {
+
+  try {
+
+    const response = await fetch(
+      "https://globalmart-backend-rktj.onrender.com/api/auth/me",
+      {
+        method: "GET",
+        credentials: "include"
+      }
+    );
+
+    if (!response.ok) {
+      setUsername("Guest");
+      return;
+    }
+
+    const data = await response.json();
+
+    if (data && data.username) {
+      setUsername(data.username);
+    } else {
+      setUsername("Guest");
+    }
+
+  } catch (error) {
+    console.log("User fetch error:", error);
+    setUsername("Guest");
+  }
+};
+  // Fetch products
   const fetchProducts = async (category = "Shirts") => {
 
     try {
@@ -30,71 +60,70 @@ export default function CustomerHomePage() {
       const response = await fetch(
         `https://globalmart-backend-rktj.onrender.com/api/products?category=${category}`,
         {
-          method: "GET",
           credentials: "include"
         }
       );
 
-      console.log("Products API status:", response.status);
-
-      // Redirect ONLY if unauthorized
-      if (response.status === 401) {
-        navigate("/");
-        return;
-      }
-
       if (!response.ok) {
-        console.error("Products API error:", response.status);
+        setProducts([]);
         return;
       }
 
       const data = await response.json();
 
-      setProducts(data.products || []);
-      setUsername(data.username || "");
-
-      if (data.username) {
-        fetchCartCount(data.username);
+      // Ensure products is always array
+      if (Array.isArray(data)) {
+        setProducts(data);
+      } else if (data && Array.isArray(data.products)) {
+        setProducts(data.products);
+      } else {
+        setProducts([]);
       }
 
     } catch (error) {
-      console.error("Error fetching products:", error);
-    } finally {
-      setLoading(false);
+      console.log("Product fetch error:", error);
+      setProducts([]);
     }
   };
 
-  // ================= FETCH CART COUNT =================
+  // Fetch cart count
+  const fetchCartCount = async (username) => {
 
-  const fetchCartCount = async (user) => {
+    if (!username || username === "Guest") {
+      setCartCount(0);
+      return;
+    }
 
     try {
 
       const response = await fetch(
-        `https://globalmart-backend-rktj.onrender.com/api/cart/items/count?username=${user}`,
+        `https://globalmart-backend-rktj.onrender.com/api/cart/items/count?username=${username}`,
         {
-          method: "GET",
           credentials: "include"
         }
       );
 
       if (!response.ok) {
-        console.error("Cart count API error:", response.status);
+        setCartCount(0);
         return;
       }
 
       const count = await response.json();
-
-      setCartCount(count);
+      setCartCount(count || 0);
 
     } catch (error) {
-      console.error("Cart count error:", error);
+      console.log("Cart count error:", error);
+      setCartCount(0);
     }
   };
 
-  // ================= ADD TO CART =================
-
+  // Add product to cart
   const handleAddToCart = async (productId) => {
+
+    if (username === "Guest") {
+      alert("Please login first to add items to cart.");
+      return;
+    }
 
     try {
 
@@ -102,13 +131,13 @@ export default function CustomerHomePage() {
         "https://globalmart-backend-rktj.onrender.com/api/cart/add",
         {
           method: "POST",
-          credentials: "include",
           headers: {
             "Content-Type": "application/json"
           },
+          credentials: "include",
           body: JSON.stringify({
-            username,
-            productId
+            username: username,
+            productId: productId
           })
         }
       );
@@ -116,15 +145,13 @@ export default function CustomerHomePage() {
       if (response.ok) {
         fetchCartCount(username);
       } else {
-        console.error("Add to cart failed:", response.status);
+        console.log("Failed to add item to cart");
       }
 
     } catch (error) {
-      console.error("Add to cart error:", error);
+      console.log("Add to cart error:", error);
     }
   };
-
-  // ================= UI =================
 
   return (
 
@@ -140,21 +167,14 @@ export default function CustomerHomePage() {
       </nav>
 
       <main className="main-content">
-
-        {loading ? (
-          <p>Loading...</p>
-        ) : (
-          <ProductList
-            products={products}
-            onAddToCart={handleAddToCart}
-          />
-        )}
-
+        <ProductList
+          products={products}
+          onAddToCart={handleAddToCart}
+        />
       </main>
 
       <Footer />
 
     </div>
-
   );
 }

@@ -1,165 +1,83 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import "./styles/OrderPage.css";
 
-export default function OrdersPage() {
+export default function OrdersPage(){
 
-  const [orders, setOrders] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [cartCount, setCartCount] = useState(0);
-  const [username, setUsername] = useState("");
+  const [orders,setOrders] = useState([]);
+  const [username,setUsername] = useState("Guest");
 
-  useEffect(() => {
+  useEffect(()=>{
+    fetchUser();
     fetchOrders();
-  }, []);
+  },[]);
 
-  const fetchOrders = async () => {
-    try {
+  const fetchUser = async()=>{
 
-      const response = await fetch(
-        "https://globalmart-backend-rktj.onrender.com/api/orders",
-        { credentials: "include" }
+    try{
+
+      const res = await fetch(
+        "https://globalmart-backend-rktj.onrender.com/api/auth/me",
+        {credentials:"include"}
       );
 
-      if (!response.ok) throw new Error("Failed to fetch orders");
+      const data = await res.json();
 
-      const data = await response.json();
-
-      setOrders(data.products || []);
       setUsername(data.username || "Guest");
 
-    } catch (error) {
-
-      console.error("Error fetching orders:", error);
-
-    } finally {
-
-      setLoading(false);
-
+    }catch(err){
+      setUsername("Guest");
     }
-  };
 
-  return (
+  }
 
-    <div className="orders-page-wrapper">
+  const fetchOrders = async()=>{
 
-      {/* HEADER */}
+    try{
 
-      <Header
-        cartCount={cartCount}
-        username={username}
-      />
+      const res = await fetch(
+        "https://globalmart-backend-rktj.onrender.com/api/orders",
+        {credentials:"include"}
+      );
 
+      if(!res.ok) throw new Error("Failed");
 
+      const data = await res.json();
 
-      {/* MAIN CONTENT */}
+      setOrders(data || []);
 
-      <main className="orders-main-container">
+    }catch(err){
+      console.log("Order error",err);
+    }
 
-        <h1 className="orders-title">
-          Your Orders
-        </h1>
+  }
 
+  return(
 
+    <div>
 
-        {/* LOADING */}
+      <Header username={username} cartCount={0}/>
 
-        {loading && (
-          <p className="orders-loading">
-            Loading orders...
-          </p>
-        )}
+      <h1>Your Orders</h1>
 
+      {orders.length === 0 && <p>No orders found</p>}
 
+      {orders.map(order=>(
+        <div key={order.order_id} className="order-card">
 
-        {/* NO ORDERS */}
+          <h3>Order Id: {order.order_id}</h3>
+          <p>Product: {order.name}</p>
+          <p>Quantity: {order.quantity}</p>
+          <p>Total: ₹{order.total_price}</p>
 
-        {!loading && orders.length === 0 && (
-          <p className="orders-empty">
-            No orders found
-          </p>
-        )}
+        </div>
+      ))}
 
-
-
-        {/* ORDERS GRID */}
-
-        {!loading && orders.length > 0 && (
-
-          <div className="orders-grid">
-
-            {orders.map((order, index) => (
-
-              <div key={index} className="orders-card">
-
-
-                {/* ORDER HEADER */}
-
-                <div className="orders-card-header">
-                  Order ID : {order.order_id}
-                </div>
-
-
-
-                {/* ORDER BODY */}
-
-                <div className="orders-card-body">
-
-                  {/* PRODUCT IMAGE */}
-
-                  <img
-                    src={
-                      order.image_url ||
-                      "https://via.placeholder.com/100"
-                    }
-                    alt={order.name}
-                    className="orders-product-image"
-                  />
-
-
-
-                  {/* PRODUCT DETAILS */}
-
-                  <div className="orders-product-details">
-
-                    <p className="orders-product-name">
-                      {order.name}
-                    </p>
-
-                    <p className="orders-product-info">
-                      Quantity : {order.quantity}
-                    </p>
-
-                    <p className="orders-product-info">
-                      Price : ₹{order.price_per_unit.toFixed(2)}
-                    </p>
-
-                    <p className="orders-total-price">
-                      Total : ₹{order.total_price.toFixed(2)}
-                    </p>
-
-                  </div>
-
-                </div>
-
-              </div>
-
-            ))}
-
-          </div>
-
-        )}
-
-      </main>
-
-
-
-      {/* FOOTER */}
-
-      <Footer />
+      <Footer/>
 
     </div>
 
   );
+
 }
