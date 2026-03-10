@@ -8,7 +8,7 @@ export function Footer() {
       <div className="footer-content">
         <div className="footer-left">
           <h3 className="footer-title">GlobalMart</h3>
-          <p className="footer-tagline">Your one-stop shop for all your needs. EveryThing you wants at one place.</p>
+          <p className="footer-tagline">Your one-stop shop for all your needs. EveryThing you wants at one place. Best Quality Products.</p>
         </div>
       </div>
       <div className="footer-bottom">
