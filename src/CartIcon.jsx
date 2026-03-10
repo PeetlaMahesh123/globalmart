@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./styles/CartIcon.css";
+
 export function CartIcon({ count }) {
   const navigate = useNavigate();
 

@@ -8,64 +8,19 @@ import CartPage from "./CartPage";
 import OrderPage from "./OrderPage";
 import AdminLogin from "./AdminLogin";
 import AdminDashboard from "./AdminDashboard";
-import ProtectedRoute from "./ProtectedRoute";
 
-export default function AppRoutes() {
-
+const AppRoutes = () => {
   return (
-
     <Routes>
-
-      {/* LOGIN */}
       <Route path="/" element={<LoginPage />} />
-
-      {/* REGISTER */}
       <Route path="/register" element={<RegistrationPage />} />
-
-      {/* CUSTOMER HOME */}
-      <Route
-        path="/customerhome"
-        element={
-          <ProtectedRoute>
-            <CustomerHomePage />
-          </ProtectedRoute>
-        }
-      />
-
-      {/* CART */}
-      <Route
-        path="/usercartpage"
-        element={
-          <ProtectedRoute>
-            <CartPage />
-          </ProtectedRoute>
-        }
-      />
-
-      {/* ORDERS */}
-      <Route
-        path="/orders"
-        element={
-          <ProtectedRoute>
-            <OrderPage />
-          </ProtectedRoute>
-        }
-      />
-
-      {/* ADMIN LOGIN */}
+      <Route path="/customerhome" element={<CustomerHomePage />} />
+      <Route path="/UserCartPage" element={<CartPage />} />
+      <Route path="/orders" element={<OrderPage />} />
       <Route path="/admin" element={<AdminLogin />} />
-
-      {/* ADMIN DASHBOARD */}
-      <Route
-        path="/adminhome"
-        element={
-          <ProtectedRoute>
-            <AdminDashboard />
-          </ProtectedRoute>
-        }
-      />
-
+      <Route path="/admindashboard" element={<AdminDashboard />} />
     </Routes>
-
   );
-}
+};
+
+export default AppRoutes;
