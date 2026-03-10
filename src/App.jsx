@@ -4,13 +4,11 @@ import AppRoutes from "./Routes";
 import "./assets/styles.css";
 
 function App() {
-
   return (
     <Router>
       <AppRoutes />
     </Router>
   );
-
 }
 
 export default App;
