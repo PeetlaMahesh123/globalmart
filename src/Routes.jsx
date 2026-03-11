@@ -13,12 +13,12 @@ const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<LoginPage />} />
-      <Route path="/register" element={<RegistrationPage />} />
-      <Route path="/customerhome" element={<CustomerHomePage />} />
-      <Route path="/UserCartPage" element={<CartPage />} />
-      <Route path="/orders" element={<OrderPage />} />
-      <Route path="/admin" element={<AdminLogin />} />
-      <Route path="/admindashboard" element={<AdminDashboard />} />
+      <Route path="register" element={<RegistrationPage />} />
+      <Route path="customerhome" element={<CustomerHomePage />} />
+      <Route path="UserCartPage" element={<CartPage />} />
+      <Route path="orders" element={<OrderPage />} />
+      <Route path="admin" element={<AdminLogin />} />
+      <Route path="admindashboard" element={<AdminDashboard />} />
     </Routes>
   );
 };

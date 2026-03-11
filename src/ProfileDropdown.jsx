@@ -7,9 +7,7 @@ export function ProfileDropdown({ username }) {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggleDropdown = () => setIsOpen(!isOpen);
 
   const handleProfileClick = () => {
     navigate("/customerhome");
@@ -25,20 +23,11 @@ export function ProfileDropdown({ username }) {
     try {
       const response = await fetch(
         "https://globalmart-backend-rktj.onrender.com/api/auth/logout",
-        {
-          method: "POST",
-          credentials: "include",
-        }
+        { method: "POST", credentials: "include" }
       );
-
-      if (response.ok) {
-        console.log("User successfully logged out");
-        navigate("/");
-      } else {
-        console.error("Failed to log out");
-      }
-    } catch (error) {
-      console.error("Error during logout:", error);
+      if (response.ok) navigate("/");
+    } catch (err) {
+      console.error(err);
     }
   };
 
@@ -49,9 +38,7 @@ export function ProfileDropdown({ username }) {
           src={useravatar}
           alt="User Avatar"
           className="user-avatar"
-          onError={(e) => {
-            e.target.src = "fallback-logo.png";
-          }}
+          onError={(e) => (e.target.src = "fallback-logo.png")}
         />
         <span className="username">{username || "Guest"}</span>
       </button>
@@ -61,11 +48,9 @@ export function ProfileDropdown({ username }) {
           <button className="dropdown-item" onClick={handleProfileClick}>
             Profile
           </button>
-
           <button className="dropdown-item" onClick={handleOrdersClick}>
             Orders
           </button>
-
           <button className="dropdown-item logout-btn" onClick={handleLogout}>
             Logout
           </button>

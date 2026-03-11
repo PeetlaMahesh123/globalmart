@@ -1,35 +1,39 @@
 import React, { useState } from "react";
 import "./styles/RegistrationPage.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function RegistrationPage() {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [role, setRole] = useState('');
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [role, setRole] = useState("");
   const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-    setError(null); // Clear previous errors
+    setError(null);
 
     try {
-      const response = await fetch('https://globalmart-backend-rktj.onrender.com/api/users/register', {
-        method: 'POST', 
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, email, password, role }),
-      });
-      
+      const response = await fetch(
+        "https://globalmart-backend-rktj.onrender.com/api/users/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ username, email, password, role }),
+        }
+      );
+
       const data = await response.json();
 
       if (response.ok) {
-        console.log('User registered successfully:', data);
-        // Redirect to login page
-        window.location.href = '/';
+        console.log("User registered successfully:", data);
+        navigate("/"); // go to login page
       } else {
-        throw new Error(data.error || 'Registration failed');
+        throw new Error(data.error || "Registration failed");
       }
     } catch (err) {
       setError(err.message);
@@ -40,12 +44,14 @@ export default function RegistrationPage() {
     <div className="page-container">
       <div className="form-container">
         <h1 className="form-title">Register</h1>
+
         {error && <p className="error-message">{error}</p>}
+
         <form onSubmit={handleSignUp} className="form-content">
+
           <div className="form-group">
-            <label htmlFor="username" className="form-label">Username</label>
+            <label className="form-label">Username</label>
             <input
-              id="username"
               type="text"
               placeholder="Enter your username"
               value={username}
@@ -54,10 +60,10 @@ export default function RegistrationPage() {
               className="form-input"
             />
           </div>
+
           <div className="form-group">
-            <label htmlFor="email" className="form-label">Email</label>
+            <label className="form-label">Email</label>
             <input
-              id="email"
               type="email"
               placeholder="Enter your email"
               value={email}
@@ -66,10 +72,10 @@ export default function RegistrationPage() {
               className="form-input"
             />
           </div>
+
           <div className="form-group">
-            <label htmlFor="password" className="form-label">Password</label>
+            <label className="form-label">Password</label>
             <input
-              id="password"
               type="password"
               placeholder="Enter your password"
               value={password}
@@ -78,25 +84,28 @@ export default function RegistrationPage() {
               className="form-input"
             />
           </div>
+
           <div className="form-group">
-            <label htmlFor="role" className="form-label">Role</label>
-           <select
-  id="role"
-  value={role}
-  onChange={(e) => setRole(e.target.value)}
-  required
-  className="form-select"
->
-  <option value="" disabled>Select your role</option>
-  <option value="CUSTOMER">Customer</option>
-  <option value="ADMIN">Admin</option>
-</select>
+            <label className="form-label">Role</label>
+            <select
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+              required
+              className="form-select"
+            >
+              <option value="">Select your role</option>
+              <option value="CUSTOMER">Customer</option>
+              <option value="ADMIN">Admin</option>
+            </select>
           </div>
-          <button type="submit" className="form-button">Sign Up</button>
+
+          <button type="submit" className="form-button">
+            Sign Up
+          </button>
         </form>
+
         <p className="form-footer">
-          Already a user?{' '}
-          <a href="/" className="form-link">Log in here</a>
+          Already a user? <Link to="/">Log in here</Link>
         </p>
       </div>
     </div>

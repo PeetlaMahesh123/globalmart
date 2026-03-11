@@ -1,71 +1,22 @@
-/* ============================= */
-/* CART ICON CONTAINER */
-/* ============================= */
-
 .cart-icon {
   position: relative;
   cursor: pointer;
-  width: 42px;
-  height: 42px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(8px);
-  transition: all 0.25s ease;
 }
-
-/* Hover Glow */
-.cart-icon:hover {
-  background: rgba(56, 189, 248, 0.15);
-  box-shadow: 0 0 18px rgba(56, 189, 248, 0.4);
-  transform: translateY(-2px);
-}
-
-/* ============================= */
-/* SVG ICON */
-/* ============================= */
 
 .cart-icon-svg {
-  width: 22px;
-  height: 22px;
-  color: #ffffff;
-  transition: 0.3s ease;
+  width: 28px;
+  height: 28px;
+  color: #fff;
 }
-
-.cart-icon:hover .cart-icon-svg {
-  color: #38bdf8;
-}
-
-/* ============================= */
-/* BADGE */
-/* ============================= */
 
 .cart-badge {
   position: absolute;
-  top: -5px;
-  right: -5px;
-  background: linear-gradient(135deg, #ff4d4d, #ff1e1e);
+  top: -6px;
+  right: -6px;
+  background-color: #ff4757;
   color: white;
-  font-size: 10px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 600;
   padding: 2px 6px;
-  border-radius: 50px; /* makes pill shape for 2+ digits */
-  min-width: 18px;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.6);
-  animation: badgePop 0.25s ease;
-}
-
-/* Floating animation */
-@keyframes badgePop {
-  0% {
-    transform: scale(0.6);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
+  border-radius: 50%;
 }

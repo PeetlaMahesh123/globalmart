@@ -9,6 +9,7 @@ export function Header({ cartCount, username }) {
     <header className="header">
       <div className="header-content">
         <Logo />
+
         <div className="header-actions">
           <CartIcon count={cartCount} />
           <ProfileDropdown username={username} />

@@ -1,213 +1,23 @@
-/* ================================= */
-/* HEADER MAIN */
-/* ================================= */
-
 .header {
-
   width: 100%;
-  min-height: 70px;
-
-  background: linear-gradient(90deg,#0f172a,#1e293b);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
+  background-color: #0f172a;
+  padding: 10px 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
   position: sticky;
   top: 0;
-
-  z-index: 1000;
-
-  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  z-index: 100;
 }
 
-
-/* ================================= */
-/* HEADER CONTAINER */
-/* ================================= */
-
-.header-container {
-
-  width: 100%;
-  max-width: 1400px;
-
-  padding: 0 40px;
-
+.header-content {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-
+  align-items: center;
+  max-width: 1200px;
+  margin: auto;
 }
 
-
-/* ================================= */
-/* LEFT SECTION */
-/* ================================= */
-
-.header-left {
+.header-actions {
   display: flex;
   align-items: center;
-}
-
-
-/* ================================= */
-/* LOGO */
-/* ================================= */
-
-.logo-container {
-
-  display: flex;
-  align-items: center;
-  gap: 10px;
-
-  cursor: pointer;
-}
-
-.logo-image {
-
-  width: 38px;
-  height: 38px;
-
-  border-radius: 50%;
-
-  object-fit: cover;
-}
-
-.logo-text {
-
-  font-size: 1.3rem;
-  font-weight: 600;
-
-  background: linear-gradient(90deg,#6366f1,#06b6d4);
-
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-}
-
-
-/* ================================= */
-/* RIGHT SECTION */
-/* ================================= */
-
-.header-right {
-
-  display: flex;
-  align-items: center;
-
   gap: 20px;
-
-}
-
-.header-right > * {
-  display: flex;
-  align-items: center;
-}
-
-
-/* ================================= */
-/* RESPONSIVE DESIGN */
-/* ================================= */
-
-
-/* ========================= */
-/* LARGE DESKTOP */
-/* ========================= */
-
-@media (min-width:1400px){
-
-  .header-container{
-    max-width:1500px;
-  }
-
-}
-
-
-/* ========================= */
-/* LAPTOP */
-/* ========================= */
-
-@media (max-width:1200px){
-
-  .header-container{
-    padding:0 30px;
-  }
-
-  .logo-text{
-    font-size:1.2rem;
-  }
-
-}
-
-
-/* ========================= */
-/* TABLET */
-/* ========================= */
-
-@media (max-width:768px){
-
-  .header{
-    min-height:65px;
-  }
-
-  .header-container{
-    padding:0 20px;
-  }
-
-  .logo-image{
-    width:34px;
-    height:34px;
-  }
-
-  .logo-text{
-    font-size:1.1rem;
-  }
-
-  .header-right{
-    gap:15px;
-  }
-
-}
-
-
-/* ========================= */
-/* MOBILE */
-/* ========================= */
-
-@media (max-width:480px){
-
-  .header{
-    min-height:60px;
-  }
-
-  .header-container{
-    padding:0 15px;
-  }
-
-  .logo-image{
-    width:32px;
-    height:32px;
-  }
-
-  .logo-text{
-    display:none; /* hide text on small screens */
-  }
-
-  .header-right{
-    gap:12px;
-  }
-
-}
-
-
-/* ========================= */
-/* VERY SMALL MOBILE */
-/* ========================= */
-
-@media (max-width:360px){
-
-  .header-right{
-    gap:10px;
-  }
-
 }
