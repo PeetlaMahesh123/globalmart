@@ -22,6 +22,7 @@
   text-align: center;
   margin-bottom: 12px;
   gap: 10px;
+  max-width: 90%; /* Ensure it doesn't overflow on small screens */
 }
 
 /* Footer title */
@@ -37,6 +38,7 @@
   color: #cbd5e1;
   line-height: 1.5;
   max-width: 400px; /* Keep tagline compact */
+  word-wrap: break-word; /* Prevent overflow */
 }
 
 /* Footer bottom copyright */
@@ -47,4 +49,59 @@
   font-size: 13px;
   color: #94a3b8;
   width: 100%;
+}
+
+/* ============================= */
+/* RESPONSIVE STYLING */
+/* ============================= */
+
+/* Tablet */
+@media (max-width: 992px) {
+  .footer {
+    padding: 18px 25px;
+  }
+  .footer-title {
+    font-size: 18px;
+  }
+  .footer-tagline {
+    font-size: 13px;
+    max-width: 350px;
+  }
+  .footer-bottom {
+    font-size: 12px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .footer {
+    padding: 16px 20px;
+  }
+  .footer-title {
+    font-size: 16px;
+  }
+  .footer-tagline {
+    font-size: 12px;
+    max-width: 300px;
+  }
+  .footer-bottom {
+    font-size: 11px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .footer {
+    padding: 14px 15px;
+  }
+  .footer-title {
+    font-size: 15px;
+  }
+  .footer-tagline {
+    font-size: 11px;
+    max-width: 250px;
+  }
+  .footer-bottom {
+    font-size: 10px;
+  }
 }

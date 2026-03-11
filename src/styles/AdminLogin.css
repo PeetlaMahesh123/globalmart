@@ -9,13 +9,11 @@
   font-family:"Poppins",sans-serif;
 }
 
-
 /* ================================= */
 /* PAGE BACKGROUND */
 /* ================================= */
 
 body{
-
   min-height:100vh;
 
   background:
@@ -26,47 +24,36 @@ body{
   url("https://images.unsplash.com/photo-1551288049-bebda4e38f71");
 
   background-size:cover;
-
   background-position:center;
-
   background-repeat:no-repeat;
 
+  display:flex;
+  flex-direction:column;
 }
-
 
 /* ================================= */
 /* PAGE LAYOUT */
 /* ================================= */
 
 .page-layout{
-
   width:100%;
-
   min-height:100vh;
 
   display:flex;
-
   align-items:center;
-
   justify-content:center;
 
-  padding:40px;
-
+  padding:40px 20px;
 }
-
 
 /* ================================= */
 /* CONTAINER */
 /* ================================= */
 
 .page-container1{
-
   width:100%;
-
   max-width:450px;
-
 }
-
 
 /* ================================= */
 /* LOGIN CARD */
@@ -89,9 +76,7 @@ body{
   box-shadow:0 25px 60px rgba(0,0,0,0.6);
 
   animation:fadeIn 0.6s ease;
-
 }
-
 
 /* ================================= */
 /* TITLE */
@@ -112,56 +97,42 @@ body{
   -webkit-background-clip:text;
 
   -webkit-text-fill-color:transparent;
-
 }
-
 
 /* ================================= */
 /* FORM */
 /* ================================= */
 
 .form-content{
-
   display:flex;
-
   flex-direction:column;
-
   gap:18px;
-
 }
-
 
 /* ================================= */
 /* FORM GROUP */
 /* ================================= */
 
 .form-group{
-
   display:flex;
-
   flex-direction:column;
-
 }
-
 
 /* LABEL */
 
 .form-label{
-
   font-size:14px;
-
   color:#e2e8f0;
-
   margin-bottom:6px;
-
 }
-
 
 /* ================================= */
 /* INPUT FIELD */
 /* ================================= */
 
 .form-input{
+
+  width:100%;
 
   padding:14px;
 
@@ -176,18 +147,14 @@ body{
   background:rgba(255,255,255,0.9);
 
   transition:0.25s;
-
 }
-
 
 .form-input:focus{
 
   transform:scale(1.02);
 
   box-shadow:0 0 10px #38bdf8;
-
 }
-
 
 /* ================================= */
 /* BUTTON */
@@ -196,6 +163,8 @@ body{
 .form-button{
 
   margin-top:10px;
+
+  width:100%;
 
   padding:14px;
 
@@ -214,18 +183,14 @@ body{
   background:linear-gradient(135deg,#06b6d4,#3b82f6);
 
   transition:0.3s;
-
 }
-
 
 .form-button:hover{
 
   transform:translateY(-2px);
 
   box-shadow:0 8px 20px rgba(59,130,246,0.6);
-
 }
-
 
 /* ================================= */
 /* ERROR MESSAGE */
@@ -240,9 +205,7 @@ body{
   font-size:14px;
 
   margin-bottom:10px;
-
 }
-
 
 /* ================================= */
 /* FOOTER */
@@ -253,9 +216,7 @@ body{
   text-align:center;
 
   margin-top:20px;
-
 }
-
 
 .form-link{
 
@@ -264,16 +225,12 @@ body{
   color:#22d3ee;
 
   font-size:14px;
-
 }
-
 
 .form-link:hover{
 
   text-decoration:underline;
-
 }
-
 
 /* ================================= */
 /* ANIMATION */
@@ -282,81 +239,97 @@ body{
 @keyframes fadeIn{
 
   from{
-
     opacity:0;
-
     transform:translateY(20px);
-
   }
 
   to{
-
     opacity:1;
-
     transform:translateY(0);
-
   }
 
 }
-
 
 /* ================================= */
 /* RESPONSIVE DESIGN */
 /* ================================= */
 
+/* LARGE DESKTOP */
+
+@media (min-width:1400px){
+
+  .page-container1{
+    max-width:500px;
+  }
+
+}
+
+/* LAPTOP */
+
+@media (max-width:1024px){
+
+  .form-container{
+    padding:35px 30px;
+  }
+
+}
 
 /* TABLET */
 
-@media (max-width:900px){
+@media (max-width:768px){
 
   .page-layout{
+    padding:30px 15px;
+  }
 
-    justify-content:center;
+  .form-container{
+    padding:30px 25px;
+  }
 
+  .form-title{
+    font-size:28px;
   }
 
 }
-
 
 /* MOBILE */
 
-@media (max-width:600px){
+@media (max-width:480px){
+
+  .page-layout{
+    padding:20px 12px;
+  }
 
   .form-container{
-
-    padding:35px 25px;
-
+    padding:25px 20px;
   }
 
   .form-title{
+    font-size:24px;
+  }
 
-    font-size:28px;
+  .form-input{
+    padding:12px;
+    font-size:13px;
+  }
 
+  .form-button{
+    padding:12px;
+    font-size:14px;
   }
 
 }
 
+/* VERY SMALL MOBILE */
 
-/* SMALL MOBILE */
-
-@media (max-width:400px){
-
-  .page-layout{
-
-    padding:20px;
-
-  }
+@media (max-width:360px){
 
   .form-title{
-
-    font-size:24px;
-
+    font-size:22px;
   }
 
   .form-input{
-
-    font-size:13px;
-
+    font-size:12px;
   }
 
 }

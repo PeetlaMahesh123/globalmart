@@ -1,3 +1,4 @@
+/* ================= LOGO CONTAINER ================= */
 .logo-container {
   display: flex;
   align-items: center;
@@ -5,19 +6,77 @@
   cursor: pointer;
 }
 
+/* ================= LOGO IMAGE ================= */
 .logo-image {
   width: 42px;
   height: 42px;
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: 0.3s;
 }
 
+.logo-image:hover {
+  transform: scale(1.05);
+}
+
+/* ================= LOGO TEXT ================= */
 .logo-text {
-  font-size: 1.5rem;
+  font-size: 1.5rem; /* ~24px */
   font-weight: 700;
   letter-spacing: 0.5px;
   background: linear-gradient(90deg,#6366f1,#06b6d4);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  transition: 0.3s;
+}
+
+.logo-text:hover {
+  transform: scale(1.05);
+}
+
+/* ================= RESPONSIVE DESIGN ================= */
+
+/* Laptop / Large Tablet */
+@media (max-width: 1200px) {
+  .logo-image {
+    width: 38px;
+    height: 38px;
+  }
+  .logo-text {
+    font-size: 1.3rem; /* ~21px */
+  }
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  .logo-image {
+    width: 36px;
+    height: 36px;
+  }
+  .logo-text {
+    font-size: 1.2rem; /* ~19px */
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .logo-image {
+    width: 32px;
+    height: 32px;
+  }
+  .logo-text {
+    font-size: 1rem; /* ~16px */
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .logo-image {
+    width: 28px;
+    height: 28px;
+  }
+  .logo-text {
+    font-size: 0.9rem; /* ~14px */
+  }
 }

@@ -1,24 +1,20 @@
 /* ================================= */
 /* GLOBAL PAGE */
 /* ================================= */
-
 .customer-homepage {
   min-height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
-
-  background:
-  radial-gradient(circle at top left, #1e293b, #0f172a 70%);
-
+  background: radial-gradient(circle at top left, #1e293b, #0f172a 70%);
   color: white;
   overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 /* ================================= */
 /* HEADER */
 /* ================================= */
-
 .customer-homepage > header {
   width: 100%;
   flex-shrink: 0;
@@ -27,48 +23,40 @@
 /* ================================= */
 /* CATEGORY NAVIGATION */
 /* ================================= */
-
 .navigation {
   width: 100%;
   padding: 20px 0;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* allows wrapping on small devices */
+  gap: 10px; /* spacing between category items */
 }
 
 /* ================================= */
 /* MAIN CONTENT */
 /* ================================= */
-
 .main-content {
-
   flex: 1;
-
   width: 100%;
-
   display: flex;
   justify-content: center;
   align-items: flex-start;
-
   padding: 30px 60px 60px;
-
   transition: all 0.3s ease;
+  flex-wrap: wrap; /* ensures content wraps on smaller screens */
 }
 
 /* Loading text */
-
 .main-content p {
   font-size: 1.1rem;
   color: #94a3b8;
+  text-align: center;
 }
 
 /* ================================= */
 /* FOOTER */
 /* ================================= */
-
 .customer-homepage > footer {
   flex-shrink: 0;
   width: 100%;
@@ -78,97 +66,69 @@
 /* RESPONSIVE DESIGN */
 /* ================================= */
 
-
-/* ================================= */
 /* LARGE DESKTOP */
-/* ================================= */
-
 @media (min-width: 1400px) {
-
   .main-content {
     padding: 40px 120px;
   }
-
 }
 
-
-/* ================================= */
 /* LAPTOP */
-/* ================================= */
-
 @media (max-width: 1200px) {
-
   .main-content {
     padding: 30px 50px;
   }
-
 }
 
-
-/* ================================= */
 /* SMALL LAPTOP / TABLET LANDSCAPE */
-/* ================================= */
-
 @media (max-width: 992px) {
-
   .main-content {
     padding: 25px 35px;
   }
-
   .navigation {
     padding: 20px 15px;
+    justify-content: center;
   }
-
 }
 
-
-/* ================================= */
 /* TABLET */
-/* ================================= */
-
 @media (max-width: 768px) {
-
   .main-content {
     padding: 20px 25px;
   }
-
   .navigation {
     padding: 15px;
+    gap: 8px;
   }
-
 }
 
-
-/* ================================= */
 /* MOBILE */
-/* ================================= */
-
 @media (max-width: 480px) {
-
   .main-content {
     padding: 15px;
+    flex-direction: column; /* stack content vertically */
+    align-items: center;
   }
-
   .navigation {
     padding: 10px;
+    gap: 6px;
   }
-
   .main-content p {
     font-size: 1rem;
     text-align: center;
   }
-
 }
 
-
-/* ================================= */
 /* VERY SMALL MOBILE */
-/* ================================= */
-
 @media (max-width: 360px) {
-
   .main-content {
     padding: 10px;
   }
-
+  .navigation {
+    padding: 8px;
+    gap: 4px;
+  }
+  .main-content p {
+    font-size: 0.95rem;
+  }
 }

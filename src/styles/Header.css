@@ -1,23 +1,86 @@
+/* ============================= */
+/* HEADER BASE STYLING */
+/* ============================= */
 .header {
   width: 100%;
   background-color: #0f172a;
-  padding: 10px 20px;
+  padding: 12px 20px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.3);
   position: sticky;
   top: 0;
   z-index: 100;
+  display: flex;
+  justify-content: center;
 }
 
 .header-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   max-width: 1200px;
-  margin: auto;
+  margin: 0 10px;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  gap: 10px;
 }
 
 .header-actions {
   display: flex;
   align-items: center;
   gap: 20px;
+  flex-wrap: wrap; /* Wrap icons/buttons if screen is small */
+}
+
+/* ============================= */
+/* RESPONSIVE STYLING */
+/* ============================= */
+
+/* Laptop / Desktop */
+@media (max-width: 1200px) {
+  .header {
+    padding: 10px 15px;
+  }
+  .header-actions {
+    gap: 15px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  .header-content {
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .header-actions {
+    gap: 12px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .header {
+    padding: 8px 12px;
+  }
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .header-actions {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .header {
+    padding: 6px 10px;
+  }
+  .header-content {
+    gap: 6px;
+  }
+  .header-actions {
+    gap: 8px;
+  }
 }

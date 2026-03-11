@@ -1,7 +1,11 @@
+/* ============================= */
+/* PROFILE DROPDOWN */
+/* ============================= */
 .profile-dropdown {
   position: relative;
 }
 
+/* PROFILE BUTTON */
 .profile-button {
   display: flex;
   align-items: center;
@@ -11,16 +15,29 @@
   cursor: pointer;
   color: white;
   font-weight: 500;
+  padding: 4px 6px;
+  transition: 0.2s;
 }
 
+.profile-button:hover {
+  opacity: 0.9;
+}
+
+/* USER AVATAR */
 .user-avatar {
   width: 32px;
   height: 32px;
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  transition: 0.2s;
 }
 
+.user-avatar:hover {
+  transform: scale(1.05);
+}
+
+/* DROPDOWN MENU */
 .dropdown-menu {
   position: absolute;
   right: 0;
@@ -32,8 +49,10 @@
   flex-direction: column;
   min-width: 140px;
   z-index: 100;
+  overflow: hidden;
 }
 
+/* DROPDOWN ITEM */
 .dropdown-item {
   padding: 10px 12px;
   color: white;
@@ -42,6 +61,7 @@
   text-align: left;
   cursor: pointer;
   transition: 0.2s;
+  font-size: 14px;
 }
 
 .dropdown-item:hover {
@@ -51,4 +71,62 @@
 .logout-btn {
   color: #ff4d4d;
   font-weight: 600;
+}
+
+/* ============================= */
+/* RESPONSIVE DESIGN */
+/* ============================= */
+
+/* Tablet */
+@media (max-width: 992px) {
+  .profile-button {
+    font-size: 13px;
+    gap: 4px;
+    padding: 3px 5px;
+  }
+  .user-avatar {
+    width: 28px;
+    height: 28px;
+  }
+  .dropdown-item {
+    font-size: 13px;
+    padding: 8px 10px;
+    min-width: 120px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .profile-button {
+    font-size: 12px;
+    gap: 3px;
+    padding: 2px 4px;
+  }
+  .user-avatar {
+    width: 24px;
+    height: 24px;
+  }
+  .dropdown-item {
+    font-size: 12px;
+    padding: 6px 8px;
+    min-width: 100px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .profile-button {
+    font-size: 11px;
+    gap: 2px;
+    padding: 2px 3px;
+  }
+  .user-avatar {
+    width: 22px;
+    height: 22px;
+  }
+  .dropdown-item {
+    font-size: 11px;
+    padding: 5px 6px;
+    min-width: 90px;
+  }
 }

@@ -1,127 +1,185 @@
-/* Reset */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-/* Full page layout */
-.page-container{
-  min-height:100vh;
-  width:100%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-
-  background: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.9)),
-  url("https://images.unsplash.com/photo-1556742049-0cfed4f6a45d");
-
-  background-size:cover;
-  background-position:center;
+/* ============================= */
+/* RESET & BASE STYLING */
+/* ============================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
 
+/* Full page layout */
+.page-container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)),
+              url("https://images.unsplash.com/photo-1556742049-0cfed4f6a45d");
+  background-size: cover;
+  background-position: center;
+}
+
 /* Form box */
-.form-container{
-  width:100%;
-  max-width:420px;
-  background: rgba(20,20,25,0.95);
-  padding:40px;
-  border-radius:12px;
-  box-shadow:0 0 30px rgba(0,255,255,0.2);
+.form-container {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(20, 20, 25, 0.95);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+  transition: 0.3s;
 }
 
 /* Title */
-.form-title{
-  text-align:center;
-  margin-bottom:25px;
-  color:#4aa3ff;
-  font-size:30px;
-  font-weight:600;
+.form-title {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #4aa3ff;
+  font-size: 30px;
+  font-weight: 600;
 }
 
 /* Form layout */
-.form-content{
-  display:flex;
-  flex-direction:column;
+.form-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 /* Group */
-.form-group{
-  margin-bottom:18px;
-  display:flex;
-  flex-direction:column;
+.form-group {
+  display: flex;
+  flex-direction: column;
 }
 
 /* Label */
-.form-label{
-  margin-bottom:6px;
-  font-size:14px;
-  color:#ddd;
+.form-label {
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #ddd;
 }
 
-/* Input */
-.form-input{
-  padding:12px;
-  border:none;
-  border-radius:8px;
-  outline:none;
-  font-size:14px;
-  background:#e8e8e8;
+/* Input & Select */
+.form-input,
+.form-select {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+  background: #e8e8e8;
+  transition: 0.2s;
 }
 
-/* Select */
-.form-select{
-  padding:12px;
-  border:none;
-  border-radius:8px;
-  outline:none;
-  font-size:14px;
-  background:#e8e8e8;
+.form-input:focus,
+.form-select:focus {
+  box-shadow: 0 0 8px #1fd1f9;
 }
 
 /* Button */
-.form-button{
-  margin-top:10px;
-  padding:12px;
-  border:none;
-  border-radius:8px;
-  font-size:16px;
-  font-weight:500;
-  cursor:pointer;
-  color:white;
-
-  background: linear-gradient(90deg,#1fd1f9,#1a7cff);
-  transition:0.3s;
+.form-button {
+  margin-top: 10px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  color: white;
+  background: linear-gradient(90deg, #1fd1f9, #1a7cff);
+  transition: 0.3s;
 }
 
-.form-button:hover{
-  transform:scale(1.04);
-  box-shadow:0 0 12px #1fd1f9;
+.form-button:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 12px #1fd1f9;
 }
 
 /* Footer */
-.form-footer{
-  text-align:center;
-  margin-top:18px;
-  font-size:14px;
-  color:#ccc;
+.form-footer {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 14px;
+  color: #ccc;
 }
 
-/* Link */
-.form-footer a{
-  color:#1fd1f9;
-  text-decoration:none;
-  font-weight:500;
+.form-footer a {
+  color: #1fd1f9;
+  text-decoration: none;
+  font-weight: 500;
 }
 
-.form-footer a:hover{
-  text-decoration:underline;
+.form-footer a:hover {
+  text-decoration: underline;
 }
 
-/* Error */
-.error-message{
-  color:#ff4d4d;
-  text-align:center;
-  margin-bottom:12px;
+/* Error message */
+.error-message {
+  color: #ff4d4d;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+/* ============================= */
+/* RESPONSIVE DESIGN */
+/* ============================= */
+
+/* Tablet */
+@media (max-width: 992px) {
+  .form-container {
+    max-width: 360px;
+    padding: 35px;
+  }
+  .form-title {
+    font-size: 28px;
+  }
+  .form-button {
+    font-size: 15px;
+    padding: 10px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .form-container {
+    max-width: 320px;
+    padding: 30px;
+  }
+  .form-title {
+    font-size: 26px;
+  }
+  .form-button {
+    font-size: 14px;
+    padding: 10px;
+  }
+  .form-input,
+  .form-select {
+    font-size: 13px;
+    padding: 10px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .form-container {
+    max-width: 280px;
+    padding: 25px;
+  }
+  .form-title {
+    font-size: 24px;
+  }
+  .form-button {
+    font-size: 13px;
+    padding: 8px;
+  }
+  .form-input,
+  .form-select {
+    font-size: 12px;
+    padding: 8px;
+  }
+  .form-footer {
+    font-size: 13px;
+  }
 }

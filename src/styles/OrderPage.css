@@ -5,9 +5,9 @@
 .maindiv {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Footer stays at bottom */
+  min-height: 100vh; /* Footer sticks at bottom */
   font-family: "Poppins", sans-serif;
-  background: #0f172a; /* Dark background similar to customer home */
+  background: #0f172a;
   color: #e2e8f0;
 }
 
@@ -22,7 +22,7 @@
 /* ============================= */
 .main-content {
   flex: 1;
-  max-width: 1200px; /* Keep content container narrow */
+  max-width: 1200px; /* Narrower for readability */
   width: 95%;
   margin: 30px auto;
   display: flex;
@@ -127,7 +127,14 @@ p {
 /* ============================= */
 /* RESPONSIVE DESIGN */
 /* ============================= */
-@media (max-width: 768px) {
+
+/* Tablet */
+@media (max-width: 992px) {
+  .main-content {
+    width: 90%;
+    margin: 25px auto;
+  }
+  
   .order-card-body {
     flex-direction: column;
     align-items: flex-start;
@@ -135,7 +142,68 @@ p {
 
   .order-product-image {
     width: 100%;
-    max-width: 200px;
+    max-width: 180px;
     height: auto;
+  }
+
+  .form-title {
+    font-size: 24px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .main-content {
+    width: 95%;
+    margin: 20px auto;
+    padding: 0 10px;
+  }
+
+  .order-product-image {
+    max-width: 150px;
+  }
+
+  .form-title {
+    font-size: 22px;
+  }
+
+  .order-details h3 {
+    font-size: 13px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .main-content {
+    width: 100%;
+    margin: 15px auto;
+    padding: 0 8px;
+  }
+
+  .order-product-image {
+    max-width: 120px;
+  }
+
+  .form-title {
+    font-size: 20px;
+  }
+
+  .order-details h3 {
+    font-size: 12px;
+  }
+}
+
+/* Very Small Mobile */
+@media (max-width: 360px) {
+  .order-product-image {
+    max-width: 100px;
+  }
+
+  .form-title {
+    font-size: 18px;
+  }
+
+  .order-details h3 {
+    font-size: 11px;
   }
 }
