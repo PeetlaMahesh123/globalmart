@@ -5,13 +5,6 @@ GlobalMart is a full-stack e-commerce web application that allows users to regis
 The application is built using React for the frontend and Spring Boot with MySQL for the backend, implementing authentication and role-based access control.
 
 ---
-## Live Link of Project:
-Github deploy link: https://peetlamahesh123.github.io/globalmart/
-
----
-netlify deploy link: https://zippy-parfait-f89cac.netlify.app/
-
----
 ## Demo Images
 <img width="1922" height="934" alt="Screenshot 2026-03-01 122059" src="https://github.com/user-attachments/assets/70f10208-9660-48d8-bc5a-19f18c352ce5" />
 
