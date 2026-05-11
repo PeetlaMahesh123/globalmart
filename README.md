@@ -150,11 +150,12 @@ http://localhost:3000
 
 ## 🎯 Future Enhancements
 
-- Payment Gateway Integration
-- Order Management
-- Email Notifications
-- Search & Filter Products
-- Admin Dashboard Analytics
+- Email & mobile Notifications.
+- Search & Filter Products.
+- Online & Cash on delivery options.
+- Delivery tracking system.
+- return policies for product.
+- secure and encrypted passwords.
 
 ---
 
